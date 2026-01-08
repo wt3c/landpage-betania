@@ -3,15 +3,19 @@
 */
 :root {
     /* Colors */
-    --primary-color: #7b8dbf; /* Lavender Blue - Calm & Trust */
-    --primary-dark: #5a6e9c;
-    --secondary-color: #e8eaf6; /* Light Lavender Background */
-    --accent-color: #c5a085; /* Earthy Tone - Warmth */
+    --primary-color: #4A90E2;
+    /* Lighter Blue - Fresh & Modern */
+    --primary-dark: #357ABD;
+    --secondary-color: #F0F4F8;
+    /* Soft Cloud Background */
+    --accent-color: #F5A623;
+    /* Warm Orange - Energetic Contrast */
     --text-dark: #333333;
     --text-light: #666666;
     --white: #ffffff;
     --light-gray: #f9fafb;
-    --success-color: #25d366; /* WhatsApp Green */
+    --success-color: #25d366;
+    /* WhatsApp Green */
 
     /* Typography */
     --font-serif: 'Cormorant Garamond', serif;
@@ -68,7 +72,10 @@ a {
 /* 
   Typography Utilities 
 */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-family: var(--font-serif);
     line-height: 1.2;
     margin-bottom: var(--spacing-md);
@@ -521,6 +528,7 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: 768px) {
+
     /* Navigation */
     .nav__toggle {
         display: block;
