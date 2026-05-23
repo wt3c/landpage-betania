@@ -1,9 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile Menu Functionality
     const navToggle = document.querySelector('.nav__toggle');
     const navList = document.querySelector('.nav__list');
     const navLinks = document.querySelectorAll('.nav__link');
-    const hamburger = document.querySelector('.hamburger');
 
     if (navToggle) {
         navToggle.addEventListener('click', () => {
@@ -14,79 +12,60 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Close menu when a link is clicked
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (navList.classList.contains('active')) {
-                navList.classList.remove('active');
-            }
-        });
+        link.addEventListener('click', () => navList.classList.remove('active'));
     });
 
-    // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (!navList.contains(e.target) && !navToggle.contains(e.target) && navList.classList.contains('active')) {
+        if (navList && navToggle &&
+            !navList.contains(e.target) &&
+            !navToggle.contains(e.target) &&
+            navList.classList.contains('active')) {
             navList.classList.remove('active');
         }
     });
 
-    // Smooth Scroll for Anchor Links (Polyfill for older browsers/Safari)
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                const headerOffset = 80;
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
+            const target = document.querySelector(targetId);
+            if (target) {
                 window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
+                    top: target.getBoundingClientRect().top + window.pageYOffset - 80,
+                    behavior: 'smooth'
                 });
             }
         });
     });
 
     // FAQ Accordion
-    const accordionTriggers = document.querySelectorAll('.accordion__trigger');
-
-    accordionTriggers.forEach(trigger => {
+    document.querySelectorAll('.accordion__trigger').forEach(trigger => {
         trigger.addEventListener('click', () => {
             const content = trigger.nextElementSibling;
             const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-
-            // Close all other items (optional - uncomment if you want only one open at a time)
-            /*
-            accordionTriggers.forEach(otherTrigger => {
-                if (otherTrigger !== trigger) {
-                    otherTrigger.setAttribute('aria-expanded', 'false');
-                    otherTrigger.nextElementSibling.style.maxHeight = null;
-                }
-            });
-            */
-
-            // Toggle current item
             trigger.setAttribute('aria-expanded', !isExpanded);
-
-            if (!isExpanded) {
-                content.style.maxHeight = content.scrollHeight + "px";
-            } else {
-                content.style.maxHeight = null;
-            }
+            content.style.maxHeight = isExpanded ? null : content.scrollHeight + 'px';
         });
     });
 
-    // Header Scroll Effect (Optional: Add shadow on scroll)
+    // Header scroll class
     const header = document.querySelector('.header');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.style.boxShadow = "0 2px 10px rgba(0,0,0,0.1)";
-        } else {
-            header.style.boxShadow = "none";
-        }
-    });
+        header.classList.toggle('header--scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    // Fade-in on scroll
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                fadeObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
 });
