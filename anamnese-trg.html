@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anamnese Terapêutica — Método TRG · Maria Betânia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap"
+          rel="stylesheet">
+    <style>
+        :root {
+            --ivory: #F6F4EF;
+            --paper: #FFFFFF;
+            --ink: #3D3B36;
+            --muted: #6E6A60;
+            --line: #E7E0D2;
+            --gold: #B08D3C;
+            --gold-deep: #8C6F2E;
+            --gold-soft: #CDB36E;
+            --gold-tint: #FBF8F0;
+            --care: #7A6A3D; /* tom sóbrio para a seção de cuidado */
+            --care-bg: #FBF6EA;
+            --care-line: #D9C68A;
+            --radius: 12px;
+            --shadow: 0 1px 2px rgba(60, 55, 40, .04), 0 10px 30px rgba(60, 55, 40, .06);
+            --maxw: 780px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            background: var(--ivory);
+            color: var(--ink);
+            font-family: "EB Garamond", Georgia, serif;
+            font-size: 18px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---------- utilitários de marca ---------- */
+        .eyebrow {
+            font-family: "Inter", sans-serif;
+            font-size: 11.5px;
+            font-weight: 600;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .script {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .rule {
+            height: 1px;
+            border: 0;
+            margin: 0;
+            background: linear-gradient(90deg, transparent, var(--gold-soft) 18%, var(--gold) 50%, var(--gold-soft) 82%, transparent);
+        }
+
+        /* ---------- progresso de leitura ---------- */
+        .progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0;
+            background: linear-gradient(90deg, var(--gold-soft), var(--gold));
+            z-index: 60;
+            transition: width .12s ease-out;
+        }
+
+        /* ---------- shell ---------- */
+        .wrap {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 28px 20px 80px;
+        }
+
+        .toolbar {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 14px 20px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            font-family: "Inter", sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--gold-deep);
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 9px 16px;
+            cursor: pointer;
+            transition: .18s ease;
+        }
+
+        .btn:hover {
+            border-color: var(--gold-soft);
+            background: var(--gold-tint);
+        }
+
+        .btn:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        /* ---------- capa ---------- */
+        .cover {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            padding: 54px 30px 46px;
+            margin-bottom: 26px;
+            animation: rise .7s ease both;
+        }
+
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(10px)
+            }
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .monogram {
+            width: 132px;
+            height: 132px;
+            margin: 0 auto 20px;
+            display: block;
+            object-fit: cover;
+            border-radius: 20px;
+            background: var(--paper);
+            box-shadow:
+                inset 0 0 0 1px var(--gold-soft),
+                0 1px 2px rgba(60, 55, 40, .05),
+                0 16px 36px rgba(60, 55, 40, .14);
+        }
+
+        .closing .monogram {
+            width: 88px;
+            height: 88px;
+            border-radius: 16px;
+            margin-bottom: 6px;
+        }
+
+        .cover h1 {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-weight: 600;
+            font-size: clamp(34px, 6vw, 48px);
+            line-height: 1.05;
+            margin: 6px 0 4px;
+            color: var(--ink);
+        }
+
+        .cover .method {
+            font-family: "Inter", sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin: 10px 0 14px;
+        }
+
+        .cover .therapist {
+            color: var(--muted);
+            font-size: 17px;
+            margin: 0 auto;
+            max-width: 46ch;
+        }
+
+        .cover .tagline {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: 22px;
+            color: var(--gold-deep);
+            margin-top: 24px;
+        }
+
+        /* ---------- seções ---------- */
+        section {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 30px 30px 26px;
+            margin-bottom: 22px;
+        }
+
+        .sec-head {
+            margin-bottom: 8px;
+        }
+
+        .sec-head .eyebrow {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .sec-head h2 {
+            font-family: "Cormorant Garamond", serif;
+            font-weight: 600;
+            font-size: clamp(24px, 4.4vw, 32px);
+            line-height: 1.12;
+            margin: 0;
+            color: var(--ink);
+        }
+
+        .sec-head .lead {
+            color: var(--muted);
+            font-size: 16px;
+            margin: 10px 0 0;
+            max-width: 62ch;
+        }
+
+        .sec-head .rule {
+            margin: 16px 0 22px;
+        }
+
+        .group {
+            margin: 0 0 18px;
+        }
+
+        .group:last-child {
+            margin-bottom: 0;
+        }
+
+        .group > .gtitle {
+            font-family: "Inter", sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--gold-deep);
+            margin: 26px 0 12px;
+            display: block;
+        }
+
+        label.q {
+            display: block;
+            font-size: 18px;
+            margin: 18px 0 7px;
+            color: var(--ink);
+        }
+
+        label.q:first-child {
+            margin-top: 0;
+        }
+
+        .hint {
+            font-family: "Inter", sans-serif;
+            font-size: 12.5px;
+            color: var(--muted);
+            margin: -2px 0 8px;
+            line-height: 1.5;
+        }
+
+        /* ---------- campos ---------- */
+        input[type=text], input[type=date], textarea {
+            width: 100%;
+            font-family: "Inter", sans-serif;
+            font-size: 15px;
+            color: var(--ink);
+            background: transparent;
+            border: 0;
+            border-bottom: 1.5px solid var(--line);
+            padding: 7px 2px;
+            transition: border-color .18s ease;
+        }
+
+        textarea {
+            border: 1.5px solid var(--line);
+            border-radius: 8px;
+            padding: 10px 12px;
+            resize: vertical;
+            min-height: 64px;
+            line-height: 1.55;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .row {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .row > .col {
+            flex: 1 1 220px;
+            min-width: 0;
+        }
+
+        .col label.q {
+            margin-top: 0;
+        }
+
+        /* opções (radio / check) */
+        .opts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin: 6px 0 4px;
+            font-family: "Inter", sans-serif;
+        }
+
+        .opt {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1.5px solid var(--line);
+            border-radius: 999px;
+            padding: 8px 14px;
+            cursor: pointer;
+            font-size: 13.5px;
+            color: var(--ink);
+            transition: .16s ease;
+            user-select: none;
+        }
+
+        .opt:hover {
+            border-color: var(--gold-soft);
+            background: var(--gold-tint);
+        }
+
+        .opt input {
+            accent-color: var(--gold);
+            width: 15px;
+            height: 15px;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .opt:has(input:checked) {
+            border-color: var(--gold);
+            background: var(--gold-tint);
+            color: var(--gold-deep);
+            font-weight: 500;
+        }
+
+        /* escala numérica */
+        .scale-legend {
+            font-family: "Inter", sans-serif;
+            font-size: 12px;
+            color: var(--muted);
+            margin: 4px 0 14px;
+        }
+
+        .scale-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            padding: 11px 2px;
+            border-bottom: 1px dashed var(--line);
+        }
+
+        .scale-row:last-child {
+            border-bottom: 0;
+        }
+
+        .scale-row .lab {
+            flex: 1 1 200px;
+            font-size: 16px;
+        }
+
+        .scale-pills {
+            display: flex;
+            gap: 7px;
+            font-family: "Inter", sans-serif;
+        }
+
+        .scale-pills label {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 34px;
+            height: 34px;
+            border: 1.5px solid var(--line);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            color: var(--muted);
+            transition: .16s ease;
+        }
+
+        .scale-pills label:hover {
+            border-color: var(--gold-soft);
+        }
+
+        .scale-pills input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .scale-pills label:has(input:checked) {
+            border-color: var(--gold);
+            background: var(--gold);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .checklist {
+            display: grid;
+            grid-template-columns:repeat(auto-fill, minmax(190px, 1fr));
+            gap: 9px;
+            margin-top: 8px;
+        }
+
+        /* ---------- consentimento ---------- */
+        .consent {
+            background: var(--gold-tint);
+            border-color: var(--care-line);
+        }
+
+        .consent ul {
+            margin: 12px 0 0;
+            padding-left: 1.1em;
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+        .consent li {
+            margin: 7px 0;
+        }
+
+        .consent .agree {
+            margin-top: 20px;
+            display: flex;
+            gap: 11px;
+            align-items: flex-start;
+            font-family: "Inter", sans-serif;
+            font-size: 14px;
+            color: var(--ink);
+            background: var(--paper);
+            border: 1.5px solid var(--care-line);
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+
+        .consent .agree input {
+            accent-color: var(--gold-deep);
+            width: 18px;
+            height: 18px;
+            margin-top: 1px;
+        }
+
+        /* ---------- cartão de cuidado (risco) ---------- */
+        .care {
+            background: var(--care-bg);
+            border: 1px solid var(--care-line);
+            border-left: 5px solid var(--care);
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin: 20px 0 6px;
+        }
+
+        .care .care-tag {
+            font-family: "Inter", sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--care);
+        }
+
+        .care .resources {
+            font-family: "Inter", sans-serif;
+            font-size: 13px;
+            color: var(--ink);
+            background: var(--paper);
+            border: 1px dashed var(--care-line);
+            border-radius: 8px;
+            padding: 12px 14px;
+            margin-top: 12px;
+            line-height: 1.55;
+        }
+
+        .care .resources b {
+            color: var(--care);
+        }
+
+        /* ---------- pilares (SVG) ---------- */
+        .pillars-fig {
+            margin: 8px 0 4px;
+        }
+
+        .pillars-fig svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .pillars-cap {
+            display: grid;
+            grid-template-columns:repeat(5, 1fr);
+            gap: 6px;
+            margin-top: 6px;
+            font-family: "Inter", sans-serif;
+            font-size: 11px;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        /* ---------- assinatura ---------- */
+        .signoff {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .signoff .col {
+            flex: 1 1 220px;
+        }
+
+        /* ---------- fechamento ---------- */
+        .closing {
+            text-align: center;
+            padding: 48px 30px;
+        }
+
+        .closing p {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: 23px;
+            line-height: 1.5;
+            color: var(--gold-deep);
+            max-width: 30ch;
+            margin: 0 auto;
+        }
+
+        .closing .seal {
+            margin-top: 22px;
+            font-family: "Inter", sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        /* ---------- anexo terapeuta ---------- */
+        .annex {
+            background: #FAF8F3;
+            border: 1px dashed var(--gold-soft);
+        }
+
+        .annex .warn {
+            font-family: "Inter", sans-serif;
+            font-size: 12.5px;
+            color: var(--gold-deep);
+            background: var(--gold-tint);
+            border: 1px solid var(--care-line);
+            border-radius: 8px;
+            padding: 11px 14px;
+            margin-bottom: 16px;
+        }
+
+        .annex h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-weight: 600;
+            font-size: 21px;
+            margin: 22px 0 6px;
+            color: var(--ink);
+        }
+
+        .annex ol, .annex ul {
+            color: var(--muted);
+            font-size: 16px;
+            padding-left: 1.2em;
+        }
+
+        .annex li {
+            margin: 6px 0;
+        }
+
+        .annex table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+            margin-top: 8px;
+        }
+
+        .annex th, .annex td {
+            text-align: left;
+            padding: 8px 10px;
+            border-bottom: 1px solid var(--line);
+            vertical-align: top;
+        }
+
+        .annex th {
+            font-family: "Inter", sans-serif;
+            font-size: 11px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--gold-deep);
+            font-weight: 600;
+        }
+
+        /* ---------- foco e acessibilidade ---------- */
+        :focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* ---------- responsivo ---------- */
+        @media (max-width: 520px) {
+            section {
+                padding: 24px 18px;
+            }
+
+            .cover {
+                padding: 40px 20px 34px;
+            }
+
+            .pillars-cap {
+                font-size: 9px;
+            }
+        }
+
+        /* ---------- impressão ---------- */
+        @media print {
+            body {
+                background: #fff;
+                font-size: 12pt;
+            }
+
+            .toolbar, .progress {
+                display: none !important;
+            }
+
+            .monogram {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                box-shadow: inset 0 0 0 1px var(--gold-soft);
+            }
+
+            section, .cover {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            section {
+                page-break-before: auto;
+            }
+
+            .cover {
+                page-break-after: always;
+            }
+
+            .opt, .scale-pills label {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .annex {
+                page-break-before: always;
+            }
+
+            body.patient-mode .annex {
+                display: none;
+            }
+        }
+
+        body.patient-mode .annex {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<div class="toolbar">
+    <button class="btn" id="modeBtn" type="button">Modo paciente (ocultar anexo)</button>
+    <button class="btn" id="printBtn" type="button">Imprimir / Salvar em PDF</button>
+</div>
+
+<div class="wrap">
+
+    <!-- ============ CAPA ============ -->
+    <header class="cover">
+        <img class="monogram" src="logo-mark.jpg" width="640" height="640"
+             alt="Logotipo Minds Balance — monograma MB" decoding="async">
+        <h1>Anamnese terapêutica</h1>
+        <div class="method">Método TRG — Reprocessamento Generativo</div>
+        <p class="therapist"><strong>Terapeuta:</strong> Maria Betânia — especialista em transtornos emocionais e
+            psicossomática</p>
+        <p class="tagline">Onde sua história parou, sua cura pode começar.</p>
+    </header>
+
+    <!-- ============ CONSENTIMENTO / LGPD ============ -->
+    <section class="consent">
+        <div class="sec-head">
+            <span class="eyebrow">Antes de começar</span>
+            <h2>Consentimento e sigilo</h2>
+            <p class="lead">Este formulário reúne informações sobre sua história, suas emoções e seu corpo, para
+                orientar o seu processo terapêutico. São dados sensíveis, tratados com sigilo profissional.</p>
+        </div>
+        <ul>
+            <li><strong>Finalidade:</strong> uso exclusivo no seu acompanhamento terapêutico.</li>
+            <li><strong>Sigilo:</strong> as informações são confidenciais e protegidas pelo sigilo profissional.</li>
+            <li><strong>Guarda e proteção:</strong> ficam armazenadas de forma segura, com acesso restrito à terapeuta,
+                e podem ser eliminadas a seu pedido (LGPD — Lei 13.709/2018, tratamento de dado de saúde mediante
+                consentimento).
+            </li>
+            <li><strong>Liberdade:</strong> você pode deixar em branco qualquer pergunta que não queira responder — isso
+                não prejudica o atendimento.
+            </li>
+            <li><strong>Cuidado com a vida:</strong> caso haja risco à sua segurança, a terapeuta poderá acionar a sua
+                rede de apoio e os serviços de emergência para proteger você. É o único limite ao sigilo.
+            </li>
+        </ul>
+        <label class="agree">
+            <input type="checkbox" name="consent" required>
+            <span>Li e concordo com o uso das minhas informações para fins terapêuticos, conforme descrito acima.</span>
+        </label>
+        <div class="signoff" style="margin-top:18px">
+            <div class="col"><label class="q">Assinatura / nome</label><input type="text" name="assinatura_consent">
+            </div>
+            <div class="col"><label class="q">Data</label><input type="date" name="data_consent"></div>
+        </div>
+    </section>
+
+    <!-- ============ OS 5 PILARES ============ -->
+    <section>
+        <div class="sec-head">
+            <span class="eyebrow">A jornada</span>
+            <h2>Os 5 pilares da nossa jornada de cura</h2>
+            <hr class="rule">
+        </div>
+        <figure class="pillars-fig">
+            <svg viewBox="0 0 600 230" role="img"
+                 aria-label="Cinco pilares: Cronológico, Somático, Temático, Futuro e Potencialização">
+                <!-- telhado -->
+                <path d="M150 70 L300 18 L450 70" fill="none" stroke="#8C6F2E" stroke-width="4"
+                      stroke-linejoin="round"/>
+                <!-- colunas -->
+                <g stroke-width="3" fill="none">
+                    <g stroke="#C9777A">
+                        <rect x="78" y="78" width="46" height="120" rx="3"/>
+                        <line x1="74" y1="78" x2="128" y2="78"/>
+                        <line x1="74" y1="198" x2="128" y2="198"/>
+                    </g>
+                    <g stroke="#B0444C">
+                        <rect x="178" y="78" width="46" height="120" rx="3"/>
+                        <line x1="174" y1="78" x2="228" y2="78"/>
+                        <line x1="174" y1="198" x2="228" y2="198"/>
+                    </g>
+                    <g stroke="#D9A93F">
+                        <rect x="278" y="78" width="46" height="120" rx="3"/>
+                        <line x1="274" y1="78" x2="328" y2="78"/>
+                        <line x1="274" y1="198" x2="328" y2="198"/>
+                    </g>
+                    <g stroke="#6E92C4">
+                        <rect x="378" y="78" width="46" height="120" rx="3"/>
+                        <line x1="374" y1="78" x2="428" y2="78"/>
+                        <line x1="374" y1="198" x2="428" y2="198"/>
+                    </g>
+                    <g stroke="#82B273">
+                        <rect x="478" y="78" width="46" height="120" rx="3"/>
+                        <line x1="474" y1="78" x2="528" y2="78"/>
+                        <line x1="474" y1="198" x2="528" y2="198"/>
+                    </g>
+                    <!-- caneluras -->
+                    <g stroke="#C9777A" stroke-width="1">
+                        <line x1="90" y1="84" x2="90" y2="192"/>
+                        <line x1="101" y1="84" x2="101" y2="192"/>
+                        <line x1="112" y1="84" x2="112" y2="192"/>
+                    </g>
+                    <g stroke="#B0444C" stroke-width="1">
+                        <line x1="190" y1="84" x2="190" y2="192"/>
+                        <line x1="201" y1="84" x2="201" y2="192"/>
+                        <line x1="212" y1="84" x2="212" y2="192"/>
+                    </g>
+                    <g stroke="#D9A93F" stroke-width="1">
+                        <line x1="290" y1="84" x2="290" y2="192"/>
+                        <line x1="301" y1="84" x2="301" y2="192"/>
+                        <line x1="312" y1="84" x2="312" y2="192"/>
+                    </g>
+                    <g stroke="#6E92C4" stroke-width="1">
+                        <line x1="390" y1="84" x2="390" y2="192"/>
+                        <line x1="401" y1="84" x2="401" y2="192"/>
+                        <line x1="412" y1="84" x2="412" y2="192"/>
+                    </g>
+                    <g stroke="#82B273" stroke-width="1">
+                        <line x1="490" y1="84" x2="490" y2="192"/>
+                        <line x1="501" y1="84" x2="501" y2="192"/>
+                        <line x1="512" y1="84" x2="512" y2="192"/>
+                    </g>
+                </g>
+                <!-- base -->
+                <line x1="60" y1="208" x2="542" y2="208" stroke="#8C6F2E" stroke-width="3"/>
+            </svg>
+        </figure>
+        <div class="pillars-cap">
+            <span>Cronológico</span><span>Somático</span><span>Temático</span><span>Futuro</span><span>Potencialização</span>
+        </div>
+    </section>
+
+    <!-- ============ 1 · SOLO E IDENTIDADE ============ -->
+    <section>
+        <div class="sec-head">
+            <span class="eyebrow">Pilar 1 · Cronológico</span>
+            <h2>O solo e a identidade</h2>
+            <hr class="rule">
+        </div>
+
+        <div class="group">
+            <span class="gtitle">Quem é você</span>
+            <label class="q">Nome completo</label>
+            <input type="text" name="nome">
+            <div class="row" style="margin-top:14px">
+                <div class="col"><label class="q">Data de nascimento</label><input type="date" name="nascimento"></div>
+                <div class="col"><label class="q">Idade</label><input type="text" name="idade"></div>
+            </div>
+            <label class="q">Como você prefere ser tratado(a)? (identidade de gênero / pronomes)</label>
+            <input type="text" name="genero">
+            <label class="q">Profissão / atividade atual</label>
+            <input type="text" name="profissao">
+            <label class="q">Com quem você divide sua vida hoje? (estado civil / arranjo familiar)</label>
+            <input type="text" name="estado_civil">
+            <label class="q">O que mais te incomoda ou te traz dor hoje? (sua queixa principal)</label>
+            <textarea name="queixa"></textarea>
+        </div>
+
+        <div class="group">
+            <span class="gtitle">O contexto da sua família de origem</span>
+            <label class="q">Como você descreveria a relação entre as pessoas que te criaram, na época em que você
+                nasceu?</label>
+            <textarea name="origem_uniao"></textarea>
+            <label class="q">Como era o clima emocional em casa? (ex.: tranquilo, tenso, com silêncios pesados, com
+                conflitos)</label>
+            <textarea name="origem_clima"></textarea>
+            <label class="q">Havia, na sua família de origem, questões com álcool, outras substâncias ou episódios de
+                agressividade?</label>
+            <textarea name="origem_vicios"></textarea>
+            <label class="q">Pelo que você sabe, como a sua chegada foi recebida pela família?</label>
+            <textarea name="origem_noticia"></textarea>
+        </div>
+
+        <div class="group">
+            <span class="gtitle">A herança emocional</span>
+            <label class="q">Olhando para os relacionamentos da sua família de origem, há padrões que você percebe se
+                repetindo na sua vida hoje? Quais?</label>
+            <textarea name="heranca_padrao"></textarea>
+            <label class="q">Há características desses relacionamentos que você faz questão de não repetir?</label>
+            <textarea name="heranca_nao"></textarea>
+            <label class="q">O que a sua história familiar te ensinou sobre o que é um relacionamento?</label>
+            <textarea name="heranca_crenca"></textarea>
+        </div>
+    </section>
+
+    <!-- ============ 2 · VENTRE E CHEGADA ============ -->
+    <section>
+        <div class="sec-head">
+            <span class="eyebrow">Pilar 1 · Cronológico</span>
+            <h2>O ventre e a chegada</h2>
+            <p class="lead">Esta etapa explora o período da gestação e do nascimento. Não são lembranças conscientes — a
+                proposta é investigar, como uma hipótese aberta, se o contexto em que você chegou ao mundo deixou marcas
+                em como você se sente hoje. Responda com o que souber por relatos da família; tudo bem não saber.</p>
+            <hr class="rule">
+        </div>
+
+        <div class="group">
+            <span class="gtitle">O contexto da espera</span>
+            <label class="q">Pelo que te contaram, qual era o sentimento predominante da sua mãe durante a gestação?
+                (ex.: medo, insegurança, luto, alegria, tranquilidade)</label>
+            <textarea name="ventre_sentimento"></textarea>
+            <label class="q">Aconteceu algum evento marcante na família durante a gestação? (perdas, mudanças,
+                dificuldades financeiras, conflitos)</label>
+            <textarea name="ventre_evento"></textarea>
+            <label class="q">Pelo que você sabe, sua chegada foi planejada / desejada? Houve dificuldades ou hesitações
+                em torno da gravidez?</label>
+            <textarea name="ventre_aceitacao"></textarea>
+        </div>
+
+        <div class="group">
+            <span class="gtitle">O nascimento</span>
+            <label class="q">Você nasceu no tempo previsto, antes ou depois?</label>
+            <input type="text" name="nasc_tempo">
+            <label class="q">Que tipo de parto foi? (natural, cesárea agendada, cesárea de emergência; uso de fórceps;
+                cordão enrolado — se souber)</label>
+            <textarea name="nasc_parto"></textarea>
+            <label class="q">Logo após nascer, você foi direto para o colo ou precisou de incubadora / UTI?</label>
+            <input type="text" name="nasc_contato">
+            <label class="q">Como é o seu ritmo no dia a dia? Você se considera uma pessoa apressada, tranquila, ou
+                depende do momento?</label>
+            <textarea name="nasc_ritmo"></textarea>
+        </div>
+    </section>
+
+    <!-- ============ 3 · INFÂNCIA E ADOLESCÊNCIA ============ -->
+    <section>
+        <div class="sec-head">
+            <span class="eyebrow">Pilar 1 · Cronológico</span>
+            <h2>Infância e adolescência</h2>
+            <hr class="rule">
+        </div>
+
+        <div class="group">
+            <span class="gtitle">O ambiente de criação</span>
+            <label class="q">Quem cuidou de você? (pais, avós, outras pessoas)</label>
+            <input type="text" name="inf_cuidado">
+            <label class="q">Como você descreveria o seu vínculo com quem te criou, nessa fase?</label>
+            <textarea name="inf_vinculo"></textarea>
+            <label class="q">Havia rigor excessivo ou agressividade por parte de alguém?</label>
+            <textarea name="inf_rigor"></textarea>
+            <label class="q">Você tem irmãos? Como é a relação com eles? (disputa, proteção, distância…)</label>
+            <textarea name="inf_irmaos"></textarea>
+        </div>
+
+        <div class="group">
+            <span class="gtitle">Comportamento e adaptação</span>
+            <label class="q">Como você era como criança?</label>
+            <div class="opts">
+                <label class="opt"><input type="radio" name="inf_perfil" value="introvertida"> Mais introvertida</label>
+                <label class="opt"><input type="radio" name="inf_perfil" value="equilibrada"> Equilibrada</label>
+                <label class="opt"><input type="radio" name="inf_perfil" value="extrovertida"> Mais extrovertida</label>
+            </div>
+            <label class="q">O que você sentia que precisava fazer (ou como precisava agir) para receber afeto e
+                aprovação?</label>
+            <textarea name="inf_aprovacao"></textarea>
+            <label class="q">Existe algum evento da infância (perda, susto, conflito) que ficou marcado em você?</label>
+            <textarea name="inf_marcante"></textarea>
+            <label class="q">Como era a sua relação com colegas e professores na escola?</label>
+            <textarea name="inf_escola"></textarea>
+        </div>
+
+        <div class="group">
+            <span class="gtitle">Crenças e medos da infância</span>
+            <label class="q">O que se falava na sua casa sobre dinheiro, sucesso e amor?</label>
+            <textarea name="inf_crencas"></textarea>
+            <label class="q">Como foi a sua adolescência? Houve mais rebeldia ou mais obediência?</label>
+            <textarea name="inf_adolescencia"></textarea>
+            <label class="q">Nessa fase, você se sentia sufocado(a), com necessidade de espaço para respirar?</label>
+            <textarea name="inf_sufoco"></textarea>
+        </div>
+    </section>
+
+    <!-- ============ 4 · VIDA ADULTA E RELACIONAMENTOS ============ -->
+    <section>
+        <div class="sec-head">
+            <span class="eyebrow">Pilar 3 · Temático</span>
+            <h2>Vida adulta e relacionamentos</h2>
+            <hr class="rule">
+        </div>
+
+        <div class="group">
+            <span class="gtitle">O despertar amoroso</span>
+            <label class="q">Como foi a sua primeira experiência em um relacionamento afetivo?</label>
+            <textarea name="adt_primeira"></textarea>
+            <label class="q">Seus parceiros costumam lembrar características do seu pai ou da sua mãe? De que
+                forma?</label>
+            <textarea name="adt_parceiros"></textarea>
+            <label class="q">Como você lida com a intimidade? Existe algum bloqueio que dificulta se entregar por
+                inteiro?</label>
+            <textarea name="adt_intimidade"></textarea>
+        </div>
+
+        <div class="group">
+            <span class="gtitle">Os papéis que você costuma assumir</span>
+            <label class="q">Quando algo dá errado, você tende mais a culpar o que está fora ou a assumir as rédeas para
+                mudar?</label>
+            <div class="opts">
+                <label class="opt"><input type="radio" name="adt_papel" value="fora"> Culpar o que está fora</label>
+                <label class="opt"><input type="radio" name="adt_papel" value="depende"> Depende</label>
+                <label class="opt"><input type="radio" name="adt_papel" value="redeas"> Assumir as rédeas</label>
+            </div>
+            <label class="q">Nos relacionamentos, você se percebe mais conduzindo as decisões ou mais se adaptando às do
+                outro?</label>
+            <textarea name="adt_dominio"></textarea>
+            <label class="q">O que você sente que ganha (proteção, atenção, evitar conflito, silêncio) ao agir dessa
+                forma?</label>
+            <textarea name="adt_ganho"></textarea>
+        </div>
+
+        <div class="group">
+            <span class="gtitle">Conexão e pertencimento nos vínculos</span>
+            <label class="q">Você sente que as pessoas te sufocam com facilidade?</label>
+            <div class="opts">
+                <label class="opt"><input type="radio" name="adt_sufoco" value="sim"> Sim</label>
+                <label class="opt"><input type="radio" name="adt_sufoco" value="asvezes"> Às vezes</label>
+                <label class="opt"><input type="radio" name="adt_sufoco" value="nao"> Não</label>
+            </div>
+            <label class="q">Você costuma ter necessidade de aprovação ou medo de que as pessoas vão embora de
+                repente?</label>
+            <textarea name="adt_aprovacao"></textarea>
+            <label class="q">Sobre o ritmo dos relacionamentos: você tem pressa para que fiquem sérios logo, ou pressa
+                para sair deles ao primeiro conflito?</label>
+            <textarea name="adt_ritmo"></textarea>
+        </div>
+
+        <div class="group">
+            <span class="gtitle">Realização e sentido</span>
+            <label class="q">Como você se sente no seu trabalho hoje? Há satisfação, cansaço, ou os dois?</label>
+            <textarea name="adt_trabalho"></textarea>
+            <label class="q">Você sente que faz parte da sua família e do seu grupo de amigos, ou às vezes se sente
+                "fora do lugar"?</label>
+            <textarea name="adt_pertence"></textarea>
+            <label class="q">Se você pudesse mudar um único comportamento seu agora, qual seria?</label>
+            <textarea name="adt_mudar"></textarea>
+        </div>
+    </section>
+
+    <!-- ============ 5 · SAÚDE EMOCIONAL E INTIMIDADE ============ -->
+    <section>
+        <div class="sec-head">
+            <span class="eyebrow">Pilar 2 · Somático</span>
+            <h2>Saúde emocional e intimidade</h2>
+            <p class="lead">Esta seção é delicada. Responda apenas o que se sentir à vontade — você pode pular qualquer
+                pergunta e, se preferir, podemos conversar sobre esses pontos pessoalmente, no seu tempo.</p>
+            <hr class="rule">
+        </div>
+
+        <div class="group">
+            <span class="gtitle">Histórico</span>
+            <label class="q">Com que idade você iniciou a vida sexual? (opcional)</label>
+            <input type="text" name="int_idade">
+            <label class="q">Como você avalia essas primeiras experiências?</label>
+            <div class="opts">
+                <label class="opt"><input type="radio" name="int_avaliacao" value="muito_dificil"> Muito difícil</label>
+                <label class="opt"><input type="radio" name="int_avaliacao" value="dificil"> Difícil</label>
+                <label class="opt"><input type="radio" name="int_avaliacao" value="neutra"> Neutra</label>
+                <label class="opt"><input type="radio" name="int_avaliacao" value="boa"> Boa</label>
+                <label class="opt"><input type="radio" name="int_avaliacao" value="muito_boa"> Muito boa</label>
+            </div>
+            <label class="q">Houve, na sua história, algum episódio de abuso, toque indesejado ou invasão de privacidade
+                (física ou emocional)?</label>
+            <p class="hint">Responda só se quiser. Se for difícil escrever, basta sinalizar e cuidamos disso juntos, no
+                atendimento.</p>
+            <textarea name="int_abuso"></textarea>
+        </div>
+
+        <div class="group">
+            <span class="gtitle">Conexão com o presente</span>
+            <label class="q">Hoje, o sexo costuma ser para você um momento de entrega ou de obrigação?</label>
+            <textarea name="int_entrega"></textarea>
+            <label class="q">Você se sente realizado(a) e respeitado(a) nas suas relações sexuais atuais?</label>
+            <textarea name="int_respeito"></textarea>
+            <label class="q">Você sente dores, desconforto ou falta de desejo?</label>
+            <div class="opts">
+                <label class="opt"><input type="radio" name="int_dor" value="sim"> Sim</label>
+                <label class="opt"><input type="radio" name="int_dor" value="nao"> Não</label>
+            </div>
+            <label class="q">Existe algo na sua vida íntima que te gera culpa ou vergonha?</label>
+            <textarea name="int_culpa"></textarea>
+        </div>
+
+        <div class="group">
+            <span class="gtitle">Corpo e presença na intimidade</span>
+            <label class="q">O contato físico do outro às vezes parece uma "invasão" do seu espaço?</label>
+            <textarea name="int_invasao"></textarea>
+            <label class="q">Você tem dificuldade de relaxar, com vontade de que "acabe logo" ou sensação de estar
+                sempre em alerta?</label>
+            <textarea name="int_alerta"></textarea>
+            <label class="q">Você sente que merece sentir prazer, ou sente que precisa apenas "servir" para se sentir
+                amado(a)?</label>
+            <textarea name="int_prazer"></textarea>
+            <label class="q">Marque o que você costuma sentir na sua vida íntima:</label>
+            <div class="checklist">
+                <label class="opt"><input type="checkbox" name="int_corpo" value="tensao"> Tensão nas pernas ou
+                    pelve</label>
+                <label class="opt"><input type="checkbox" name="int_corpo" value="no_garganta"> Nó na garganta / vontade
+                    de chorar ou calar</label>
+                <label class="opt"><input type="checkbox" name="int_corpo" value="pensamentos"> Pensamentos acelerados
+                    que tiram você do momento</label>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 6 · PERTENCIMENTO E CONEXÃO ============ -->
+    <section>
+        <div class="sec-head">
+            <span class="eyebrow">Pilar 3 · Temático</span>
+            <h2>Pertencimento e conexão</h2>
+            <hr class="rule">
+        </div>
+
+        <div class="group">
+            <span class="gtitle">Contexto religioso ou espiritual</span>
+            <label class="q">Você se sente pertencendo ao seu contexto religioso atual? Por quê?</label>
+            <div class="opts">
+                <label class="opt"><input type="radio" name="rel_pertence" value="sim"> Sim</label>
+                <label class="opt"><input type="radio" name="rel_pertence" value="nao"> Não</label>
+            </div>
+            <textarea name="rel_porque" placeholder="Por quê?"></textarea>
+            <label class="q">Como era a religião na sua infância? Havia medo, punição ou acolhimento?</label>
+            <textarea name="rel_infancia"></textarea>
+            <label class="q">Para você, o Criador é mais um juiz que cobra ou um pai que acolhe?</label>
+            <textarea name="rel_criador"></textarea>
+        </div>
+
+        <div class="group">
+            <span class="gtitle">Contexto social e amizades</span>
+            <label class="q">Você se sente pertencendo ao seu contexto social (amigos, grupos)? Por quê?</label>
+            <div class="opts">
+                <label class="opt"><input type="radio" name="soc_pertence" value="sim"> Sim</label>
+                <label class="opt"><input type="radio" name="soc_pertence" value="nao"> Não</label>
+            </div>
+            <textarea name="soc_porque" placeholder="Por quê?"></textarea>
+            <label class="q">Quantos amigos próximos você tem hoje?</label>
+            <input type="text" name="soc_amigos">
+            <label class="q">Qual a opinião sobre você que mais se repete na boca das pessoas?</label>
+            <textarea name="soc_opiniao"></textarea>
+        </div>
+
+        <div class="group">
+            <span class="gtitle">Frustração e pesos</span>
+            <label class="q">Marque onde você sente que "faltou" algo, ou onde a vida não entregou o que você
+                esperava:</label>
+            <div class="checklist">
+                <label class="opt"><input type="checkbox" name="frustra" value="pais"> Pais</label>
+                <label class="opt"><input type="checkbox" name="frustra" value="filhos"> Filhos</label>
+                <label class="opt"><input type="checkbox" name="frustra" value="conjuge"> Cônjuge</label>
+                <label class="opt"><input type="checkbox" name="frustra" value="irmaos"> Irmãos</label>
+                <label class="opt"><input type="checkbox" name="frustra" value="profissao"> Profissão</label>
+                <label class="opt"><input type="checkbox" name="frustra" value="identidade"> Identidade / vida
+                    sexual</label>
+            </div>
+        </div>
+
+        <div class="group">
+            <span class="gtitle">Pertencer e permanecer</span>
+            <label class="q">Você costuma entrar em grupos (igreja, amigos, cursos) e logo querer sair, como se aquele
+                lugar não fosse para você?</label>
+            <textarea name="pert_sair"></textarea>
+            <label class="q">Você costuma se sentir sozinho(a) mesmo estando no meio de muitas pessoas?</label>
+            <textarea name="pert_solidao"></textarea>
+        </div>
+    </section>
+
+    <!-- ============ 7 · EMOÇÕES E MEDOS ============ -->
+    <section>
+        <div class="sec-head">
+            <span class="eyebrow">Pilar 3 · Temático</span>
+            <h2>O mapa das emoções e dos medos</h2>
+            <hr class="rule">
+        </div>
+
+        <div class="group">
+            <span class="gtitle">O que o medo tenta proteger</span>
+            <label class="q">Do que você tem medo hoje? (perder alguém, adoecer, falta de dinheiro…)</label>
+            <textarea name="med_medos"></textarea>
+            <label class="q">Você sente um medo constante de que "algo ruim vai acontecer", mesmo sem saber o
+                porquê?</label>
+            <textarea name="med_constante"></textarea>
+            <label class="q">Existe algum lugar, situação ou animal que te causam pavor imediato?</label>
+            <textarea name="med_pavor"></textarea>
+            <label class="q">Você sente que precisa controlar tudo ao seu redor para se sentir seguro(a)?</label>
+            <textarea name="med_controle"></textarea>
+        </div>
+
+        <div class="group">
+            <span class="gtitle">Termômetro emocional</span>
+            <p class="scale-legend">Com que intensidade estes sentimentos aparecem na sua vida hoje?
+                &nbsp;<strong>1</strong> = pouca · <strong>2</strong> = média · <strong>3</strong> = muita</p>
+            <div class="scale-row"><span class="lab">Ansiedade / pressa</span>
+                <div class="scale-pills"><label><input type="radio" name="emo_ansiedade"
+                                                       value="1">1</label><label><input type="radio"
+                                                                                        name="emo_ansiedade" value="2">2</label><label><input
+                        type="radio" name="emo_ansiedade" value="3">3</label></div>
+            </div>
+            <div class="scale-row"><span class="lab">Culpa</span>
+                <div class="scale-pills"><label><input type="radio" name="emo_culpa" value="1">1</label><label><input
+                        type="radio" name="emo_culpa" value="2">2</label><label><input type="radio" name="emo_culpa"
+                                                                                       value="3">3</label></div>
+            </div>
+            <div class="scale-row"><span class="lab">Tristeza / angústia</span>
+                <div class="scale-pills"><label><input type="radio" name="emo_tristeza" value="1">1</label><label><input
+                        type="radio" name="emo_tristeza" value="2">2</label><label><input type="radio"
+                                                                                          name="emo_tristeza" value="3">3</label>
+                </div>
+            </div>
+            <div class="scale-row"><span class="lab">Raiva / revolta</span>
+                <div class="scale-pills"><label><input type="radio" name="emo_raiva" value="1">1</label><label><input
+                        type="radio" name="emo_raiva" value="2">2</label><label><input type="radio" name="emo_raiva"
+                                                                                       value="3">3</label></div>
+            </div>
+            <div class="scale-row"><span class="lab">Insegurança</span>
+                <div class="scale-pills"><label><input type="radio" name="emo_inseguranca"
+                                                       value="1">1</label><label><input type="radio"
+                                                                                        name="emo_inseguranca"
+                                                                                        value="2">2</label><label><input
+                        type="radio" name="emo_inseguranca" value="3">3</label></div>
+            </div>
+            <div class="scale-row"><span class="lab">Solidão</span>
+                <div class="scale-pills"><label><input type="radio" name="emo_solidao" value="1">1</label><label><input
+                        type="radio" name="emo_solidao" value="2">2</label><label><input type="radio" name="emo_solidao"
+                                                                                         value="3">3</label></div>
+            </div>
+        </div>
+
+        <!-- CARTÃO DE CUIDADO -->
+        <div class="care">
+            <span class="care-tag">Um momento de cuidado</span>
+            <label class="q" style="margin-top:8px">Que tipo de pensamento você mais alimenta sobre si mesmo(a)?</label>
+            <div class="opts">
+                <label class="opt"><input type="radio" name="alerta_pensamentos" value="positivos"> Mais
+                    positivos</label>
+                <label class="opt"><input type="radio" name="alerta_pensamentos" value="mistos"> Mistos</label>
+                <label class="opt"><input type="radio" name="alerta_pensamentos" value="negativos"> Mais
+                    negativos</label>
+            </div>
+            <label class="q">Em momentos difíceis, você já teve pensamentos de não querer continuar vivendo, ou de se
+                machucar?</label>
+            <div class="opts">
+                <label class="opt"><input type="radio" name="alerta_ideacao" value="nao"> Não</label>
+                <label class="opt"><input type="radio" name="alerta_ideacao" value="passado"> Já tive, no
+                    passado</label>
+                <label class="opt"><input type="radio" name="alerta_ideacao" value="recente"> Sim, recentemente</label>
+            </div>
+            <div class="resources" id="riskNote">
+                Se você marcou que esses pensamentos existem, é importante conversarmos sobre isso — e você não está
+                sozinho(a). Apoio imediato, gratuito e sigiloso: <b>CVV — 188</b> (ligação 24h) ou <b>cvv.org.br</b>. Em
+                emergência: <b>SAMU 192</b> ou o <b>CAPS</b> mais próximo de você.
+            </div>
+            <label class="q">Você usa álcool, outras substâncias ou cigarro para tentar acalmar as emoções?</label>
+            <textarea name="alerta_substancias"></textarea>
+            <label class="q">De 0 a 10, como você avalia o seu nível de estresse ultimamente?</label>
+            <input type="text" name="alerta_estresse" style="max-width:120px">
+        </div>
+
+        <div class="group" style="margin-top:22px">
+            <span class="gtitle">Conexão com a raiz</span>
+            <label class="q">Você sente que o mundo é um lugar perigoso e que precisa estar sempre em alerta?</label>
+            <textarea name="med_perigoso"></textarea>
+            <label class="q">O seu medo aumenta quando você se sente preso(a) ou sem saída em algum lugar?</label>
+            <textarea name="med_semsaida"></textarea>
+        </div>
+    </section>
+
+    <!-- ============ 8 · AUTORRESPEITO ============ -->
+    <section>
+        <div class="sec-head">
+            <span class="eyebrow">Pilar 4 · Futuro</span>
+            <h2>Autorrespeito e espaço pessoal</h2>
+            <hr class="rule">
+        </div>
+
+        <div class="group">
+            <span class="gtitle">O termômetro da aprovação</span>
+            <label class="q">Você sente que precisa ser útil ou "bonzinho(a)" o tempo todo para que as pessoas não te
+                abandonem?</label>
+            <textarea name="aut_util"></textarea>
+            <label class="q">Qual o seu nível de dificuldade para dizer "não" às outras pessoas?</label>
+            <div class="opts">
+                <label class="opt"><input type="radio" name="aut_nao" value="baixo"> Baixo</label>
+                <label class="opt"><input type="radio" name="aut_nao" value="medio"> Médio</label>
+                <label class="opt"><input type="radio" name="aut_nao" value="alto"> Alto</label>
+            </div>
+            <label class="q">Você só se sente bem quando alguém valida o que você fez? Sem elogio, sente que não tem
+                valor?</label>
+            <textarea name="aut_validacao"></textarea>
+        </div>
+
+        <div class="group">
+            <span class="gtitle">Limites e invasão</span>
+            <label class="q">Você sente que as pessoas decidem as coisas por você com facilidade?</label>
+            <textarea name="aut_decidem"></textarea>
+            <label class="q">Quando alguém te pede algo que você não quer fazer, o que você sente fisicamente? (ex.:
+                aperto na garganta, tontura)</label>
+            <textarea name="aut_fisico"></textarea>
+            <label class="q">Você costuma deixar seus sonhos e seu descanso de lado para resolver problemas dos
+                outros?</label>
+            <textarea name="aut_sonhos"></textarea>
+        </div>
+
+        <div class="group">
+            <span class="gtitle">Conexão com a raiz</span>
+            <label class="q">Você sente que precisa "provar" que merece estar nos lugares e nos vínculos de que faz
+                parte?</label>
+            <textarea name="aut_provar"></textarea>
+            <label class="q">A sua pressa costuma ser uma forma de provar que é eficiente e, assim, garantir que ninguém
+                te rejeite?</label>
+            <textarea name="aut_pressa"></textarea>
+            <label class="q">Você respeita os sinais de cansaço do seu corpo, ou costuma "se cobrar" para continuar
+                produzindo sem parar?</label>
+            <textarea name="aut_cansaco"></textarea>
+        </div>
+    </section>
+
+    <!-- ============ 9 · MAPA PSICOSSOMÁTICO ============ -->
+    <section>
+        <div class="sec-head">
+            <span class="eyebrow">Pilar 2 · Somático</span>
+            <h2>O mapa psicossomático</h2>
+            <p class="lead">O corpo guarda o que a gente sente. Aqui mapeamos onde isso aparece em você.</p>
+            <hr class="rule">
+        </div>
+
+        <div class="group">
+            <span class="gtitle">Onde você sente</span>
+            <label class="q">Marque as regiões onde você sente dor, desconforto ou tensão com frequência:</label>
+            <div class="checklist">
+                <label class="opt"><input type="checkbox" name="corpo_regiao" value="cabeca"> Cabeça</label>
+                <label class="opt"><input type="checkbox" name="corpo_regiao" value="garganta"> Garganta /
+                    pescoço</label>
+                <label class="opt"><input type="checkbox" name="corpo_regiao" value="ombros"> Ombros / nuca</label>
+                <label class="opt"><input type="checkbox" name="corpo_regiao" value="peito"> Peito</label>
+                <label class="opt"><input type="checkbox" name="corpo_regiao" value="estomago"> Estômago</label>
+                <label class="opt"><input type="checkbox" name="corpo_regiao" value="lombar"> Lombar / costas</label>
+                <label class="opt"><input type="checkbox" name="corpo_regiao" value="intestino"> Intestino</label>
+                <label class="opt"><input type="checkbox" name="corpo_regiao" value="pelve"> Pelve / quadril</label>
+                <label class="opt"><input type="checkbox" name="corpo_regiao" value="pernas"> Pernas</label>
+            </div>
+        </div>
+
+        <div class="group">
+            <span class="gtitle">Sinais e sintomas</span>
+            <p class="scale-legend">Com que frequência você sente cada sintoma? &nbsp;<strong>1</strong> = nunca /
+                raramente · <strong>2</strong> = às vezes · <strong>3</strong> = com frequência</p>
+            <div class="scale-row"><span class="lab">Dores de cabeça</span>
+                <div class="scale-pills"><label><input type="radio" name="sint_cabeca" value="1">1</label><label><input
+                        type="radio" name="sint_cabeca" value="2">2</label><label><input type="radio" name="sint_cabeca"
+                                                                                         value="3">3</label></div>
+            </div>
+            <div class="scale-row"><span class="lab">Aperto no peito</span>
+                <div class="scale-pills"><label><input type="radio" name="sint_peito" value="1">1</label><label><input
+                        type="radio" name="sint_peito" value="2">2</label><label><input type="radio" name="sint_peito"
+                                                                                        value="3">3</label></div>
+            </div>
+            <div class="scale-row"><span class="lab">Nó na garganta</span>
+                <div class="scale-pills"><label><input type="radio" name="sint_garganta"
+                                                       value="1">1</label><label><input type="radio"
+                                                                                        name="sint_garganta" value="2">2</label><label><input
+                        type="radio" name="sint_garganta" value="3">3</label></div>
+            </div>
+            <div class="scale-row"><span class="lab">Dores de estômago / gastrite</span>
+                <div class="scale-pills"><label><input type="radio" name="sint_estomago"
+                                                       value="1">1</label><label><input type="radio"
+                                                                                        name="sint_estomago" value="2">2</label><label><input
+                        type="radio" name="sint_estomago" value="3">3</label></div>
+            </div>
+            <div class="scale-row"><span class="lab">Dores lombares / nas costas</span>
+                <div class="scale-pills"><label><input type="radio" name="sint_lombar" value="1">1</label><label><input
+                        type="radio" name="sint_lombar" value="2">2</label><label><input type="radio" name="sint_lombar"
+                                                                                         value="3">3</label></div>
+            </div>
+            <div class="scale-row"><span class="lab">Intestino preso ou solto</span>
+                <div class="scale-pills"><label><input type="radio" name="sint_intestino"
+                                                       value="1">1</label><label><input type="radio"
+                                                                                        name="sint_intestino" value="2">2</label><label><input
+                        type="radio" name="sint_intestino" value="3">3</label></div>
+            </div>
+            <div class="scale-row"><span class="lab">Cansaço</span>
+                <div class="scale-pills"><label><input type="radio" name="sint_cansaco" value="1">1</label><label><input
+                        type="radio" name="sint_cansaco" value="2">2</label><label><input type="radio"
+                                                                                          name="sint_cansaco" value="3">3</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="group">
+            <span class="gtitle">Reação do corpo ao estresse</span>
+            <label class="q">Sob pressão, você sente necessidade física de "sair correndo", pernas inquietas ou coração
+                acelerado?</label>
+            <textarea name="sint_correr"></textarea>
+            <label class="q">Você sente que o corpo "trava" e você perde a voz diante de um conflito?</label>
+            <textarea name="sint_trava"></textarea>
+            <label class="q">Já percebeu alguma doença sua aparecer logo após um grande choque emocional ou uma
+                perda?</label>
+            <textarea name="sint_doenca"></textarea>
+        </div>
+
+        <div class="group">
+            <span class="gtitle">Conexão com a raiz</span>
+            <label class="q">Se o seu corpo pudesse falar agora sobre tudo o que você sente, o que ele te pediria para
+                fazer por ele?</label>
+            <textarea name="sint_corpo_fala" style="min-height:90px"></textarea>
+        </div>
+    </section>
+
+    <!-- ============ FECHAMENTO ============ -->
+    <section class="closing">
+        <img class="monogram" src="logo-mark.jpg" width="640" height="640" alt="" aria-hidden="true"
+             decoding="async">
+        <p>A dor é o rastro da sua história. Onde dói agora é onde a sua cura pode começar. Na TRG, vamos liberar o seu
+            corpo desse peso para que você possa, enfim, caminhar com leveza.</p>
+        <div class="seal">Espírito equilibrado · alma sarada · corpo curado</div>
+    </section>
+
+    <!-- ============ ANEXO — USO DA TERAPEUTA ============ -->
+    <section class="annex" id="annex">
+        <div class="sec-head">
+            <span class="eyebrow">Anexo · uso exclusivo da terapeuta</span>
+            <h2 style="font-size:26px">Apoio à leitura clínica</h2>
+            <hr class="rule">
+        </div>
+        <div class="warn">Esta página é um apoio para a terapeuta. Use o botão <strong>“Modo paciente”</strong> no topo
+            (ou remova esta seção) antes de entregar o formulário a quem será atendido.
+        </div>
+
+        <h3>Protocolo de cuidado em caso de risco</h3>
+        <p style="color:var(--muted);margin:0 0 8px">Acione este fluxo se houver indicação de ideação suicida,
+            automutilação ou risco à vida (campo “Um momento de cuidado”).</p>
+        <ol>
+            <li>Acolher sem julgamento e não deixar a pessoa sozinha durante a crise.</li>
+            <li>Avaliar a gravidade — diferenciar pensamento, intenção e plano — sem detalhar ou sugerir meios.</li>
+            <li>Acionar a rede de apoio: contato de confiança da pessoa, <strong>CVV 188</strong>, <strong>SAMU
+                192</strong>, CAPS / UPA de referência.
+            </li>
+            <li>A TRG não é intervenção de crise: estabilizar e encaminhar antes de prosseguir; articular com médico /
+                psiquiatra quando indicado.
+            </li>
+            <li>Registrar a conduta e combinar um plano de segurança e o seguimento.</li>
+        </ol>
+
+        <h3>Mapa simbólico dos sintomas corporais</h3>
+        <p style="color:var(--muted);margin:0 0 4px">Hipóteses de leitura — mantidas fora do formulário do paciente para
+            não induzir a resposta.</p>
+        <table>
+            <thead>
+            <tr>
+                <th>Sintoma</th>
+                <th>Hipótese temática</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Dores de cabeça</td>
+                <td>Excesso de controle</td>
+            </tr>
+            <tr>
+                <td>Aperto no peito</td>
+                <td>Ansiedade e medo</td>
+            </tr>
+            <tr>
+                <td>Nó na garganta</td>
+                <td>Sufoco / o que não foi dito</td>
+            </tr>
+            <tr>
+                <td>Estômago / gastrite</td>
+                <td>Não aceitação</td>
+            </tr>
+            <tr>
+                <td>Lombar / costas</td>
+                <td>Falta de apoio</td>
+            </tr>
+            <tr>
+                <td>Intestino</td>
+                <td>Segurar / não soltar</td>
+            </tr>
+            <tr>
+                <td>Cansaço</td>
+                <td>Sobrecarga / autocobrança</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+</div>
+
+<script>
+    document.getElementById('printBtn').addEventListener('click', function () {
+        window.print();
+    });
+
+    var modeBtn = document.getElementById('modeBtn');
+    modeBtn.addEventListener('click', function () {
+        var on = document.body.classList.toggle('patient-mode');
+        modeBtn.textContent = on ? 'Modo terapeuta (mostrar anexo)' : 'Modo paciente (ocultar anexo)';
+    });
+
+    // Barra de progresso de leitura do formulário
+    var progress = document.getElementById('progress');
+    function updateProgress() {
+        var h = document.documentElement;
+        var max = h.scrollHeight - h.clientHeight;
+        var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max : 0;
+        progress.style.width = (pct * 100).toFixed(1) + '%';
+    }
+    window.addEventListener('scroll', updateProgress, {passive: true});
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
+
+    // Realça a nota de apoio quando há indicação de pensamentos de risco
+    var note = document.getElementById('riskNote');
+    document.querySelectorAll('input[name="alerta_ideacao"]').forEach(function (r) {
+        r.addEventListener('change', function () {
+            if (this.value === 'recente' || this.value === 'passado') {
+                note.style.borderStyle = 'solid';
+                note.style.background = '#FFFDF7';
+                note.scrollIntoView({behavior: 'smooth', block: 'center'});
+            }
+        });
+    });
+</script>
+</body>
+</html>
