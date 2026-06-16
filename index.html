@@ -30,7 +30,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lato:wght@300;400;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
           rel="stylesheet">
 
     <!-- Styles -->
@@ -60,16 +60,16 @@
 <!-- Header -->
 <header class="header">
     <div class="container header__container">
-        <a href="#" class="logo">Maria Betania</a>
+        <a href="#home" class="logo">Maria Betânia<span>.</span></a>
         <nav class="nav">
             <ul class="nav__list">
                 <li><a href="#sobre" class="nav__link">Sobre</a></li>
-                <li><a href="#servicos" class="nav__link">Serviços</a></li>
-                <li><a href="#beneficios" class="nav__link">Benefícios</a></li>
+                <li><a href="#servicos" class="nav__link">Como ajudo</a></li>
+                <li><a href="#beneficios" class="nav__link">Por que terapia</a></li>
                 <li><a href="#faq" class="nav__link">Dúvidas</a></li>
-                <li><a href="#contato" class="nav__link btn btn--primary">Agendar</a></li>
+                <li><a href="#contato" class="nav__link btn btn--primary">Agendar conversa</a></li>
             </ul>
-            <button class="nav__toggle" aria-label="Abrir menu">
+            <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false">
                 <span class="hamburger"></span>
             </button>
         </nav>
@@ -79,66 +79,85 @@
 <!-- Hero Section -->
 <section class="hero" id="home">
     <div class="container hero__container">
-        <div class="hero__content fade-in">
-            <span class="hero__subtitle-tag">Terapeuta Profissional</span>
-            <h1 class="hero__title">Reencontre seu equilíbrio e bem-estar emocional</h1>
-            <p class="hero__subtitle">Atendimento terapêutico acolhedor e personalizado para ajudar você a viver com mais leveza e propósito.</p>
+        <div class="hero__content reveal">
+            <span class="eyebrow">Psicoterapia · Rio de Janeiro</span>
+            <h1 class="hero__title">Um espaço para respirar e <span class="display-italic">recomeçar</span>.</h1>
+            <p class="hero__subtitle">Atendimento terapêutico acolhedor, no seu tempo. Aqui você encontra escuta sem
+                julgamento para atravessar o que pesa — e seguir mais leve.</p>
             <div class="hero__actions">
-                <a href="https://wa.me/5521988070905?text=Olá! Gostaria de agendar uma consulta."
+                <a href="https://wa.me/5521988070905?text=Olá! Gostaria de agendar uma conversa."
                    class="btn btn--primary" target="_blank" rel="noopener noreferrer">
-                    Agendar Consulta
+                    Agendar conversa
                 </a>
+                <a href="#sobre" class="btn btn--ghost">Conhecer a Betânia</a>
             </div>
+            <ul class="hero__trust">
+                <li>Presencial &amp; Online</li>
+                <li>Sigilo absoluto</li>
+                <li>Primeira conversa sem compromisso</li>
+            </ul>
         </div>
-        <div class="hero__image">
-            <div class="hero__image-deco"></div>
-            <div class="hero__image-frame">
-                <img src="IMG-20250110-WA0171.jpg" alt="Maria Betania — Terapeuta Profissional" loading="lazy">
+        <div class="portal reveal">
+            <div class="portal__aura" aria-hidden="true"></div>
+            <div class="portal__ring" aria-hidden="true"></div>
+            <div class="portal__frame">
+                <img src="IMG-20250110-WA0171.jpg" alt="Maria Betânia, terapeuta, sorrindo" loading="eager">
             </div>
+            <p class="portal__breath" aria-hidden="true">inspire · segure · expire</p>
         </div>
     </div>
 </section>
 
 <!-- Sobre Section -->
-<section class="about section" id="sobre">
+<section class="about section section--cream" id="sobre">
     <div class="container about__container">
-        <div class="about__image fade-in">
-            <img src="IMG-20250110-WA0171.jpg"
-                 alt="Foto profissional de Maria Betania" loading="lazy">
+        <div class="about__image reveal">
+            <img src="IMG-20250110-WA0156.jpg"
+                 alt="Maria Betânia em retrato profissional" loading="lazy">
         </div>
-        <div class="about__content fade-in">
-            <h2 class="section__title">Sobre Mim</h2>
-            <p class="text">Olá, sou Maria Betania. Com anos de experiência na área da saúde, dedico minha carreira a ajudar pessoas a superarem desafios emocionais e encontrarem um caminho de autoconhecimento e paz interior.</p>
-            <p class="text">Minha abordagem é centrada no ser humano, oferecendo um espaço seguro e livre de julgamentos para que você possa explorar seus sentimentos e pensamentos com total confiança.</p>
+        <div class="about__content reveal">
+            <span class="eyebrow">Quem vai te receber</span>
+            <h2 class="about__title">Prazer, sou a Betânia.</h2>
+            <p class="about__text">Dedico minha trajetória a caminhar ao lado de quem precisa de um espaço seguro para
+                respirar. Acredito que toda pessoa merece ser ouvida sem pressa e sem julgamento.</p>
+            <p class="about__text">Minha escuta é centrada em você: aqui não existe certo ou errado, apenas o seu tempo
+                para entender o que sente, reconhecer padrões e abrir novos caminhos com confiança.</p>
             <ul class="about__credentials">
-                <li><span class="check-icon">✓</span> Atendimento Humanizado e Personalizado</li>
-                <li><span class="check-icon">✓</span> Sigilo Profissional Absoluto</li>
-                <li><span class="check-icon">✓</span> Experiência em Saúde Mental</li>
-                <li><span class="check-icon">✓</span> Atendimento Presencial e Online</li>
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Escuta humanizada e personalizada</li>
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Sigilo profissional absoluto</li>
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Experiência em saúde mental</li>
+                <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Atendimento presencial e online</li>
             </ul>
         </div>
     </div>
 </section>
 
 <!-- Serviços Section -->
-<section class="services section" id="servicos">
+<section class="services section section--deep" id="servicos">
     <div class="container">
-        <h2 class="section__title text-center">Como posso ajudar</h2>
-        <div class="services__grid">
-            <div class="card service-card fade-in">
-                <div class="service-card__icon">🧠</div>
-                <h3 class="service-card__title">Terapia Individual</h3>
-                <p class="service-card__description">Sessões personalizadas para tratar ansiedade, depressão, estresse e questões pessoais.</p>
+        <div class="section__head reveal">
+            <span class="eyebrow eyebrow--center">Como ajudo</span>
+            <h2 class="section__title">Caminhos para você se reencontrar</h2>
+            <p class="section__lead">Cada processo é único. Começamos por onde faz sentido para você.</p>
+        </div>
+        <div class="grid grid--3">
+            <div class="card reveal">
+                <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></div>
+                <h3 class="card__title">Terapia individual</h3>
+                <p class="card__text">Um encontro só seu para lidar com ansiedade, tristeza, estresse e as questões que
+                    pesam no dia a dia.</p>
             </div>
-            <div class="card service-card fade-in">
-                <div class="service-card__icon">🌱</div>
-                <h3 class="service-card__title">Autoconhecimento</h3>
-                <p class="service-card__description">Processo guiado para entender melhor suas emoções, padrões e potenciais.</p>
+            <div class="card reveal">
+                <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg></div>
+                <h3 class="card__title">Autoconhecimento</h3>
+                <p class="card__text">Um processo guiado para entender suas emoções, enxergar padrões e reconhecer o seu
+                    potencial.</p>
             </div>
-            <div class="card service-card fade-in">
-                <div class="service-card__icon">🤝</div>
-                <h3 class="service-card__title">Relacionamentos</h3>
-                <p class="service-card__description">Suporte para lidar com conflitos interpessoais, familiares ou conjugais.</p>
+            <div class="card reveal">
+                <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                <h3 class="card__title">Relacionamentos</h3>
+                <p class="card__text">Apoio para atravessar conflitos familiares, conjugais ou interpessoais com mais
+                    clareza e cuidado.</p>
             </div>
         </div>
     </div>
@@ -147,48 +166,58 @@
 <!-- Benefícios Section -->
 <section class="benefits section" id="beneficios">
     <div class="container">
-        <h2 class="section__title text-center">Por que fazer terapia?</h2>
-        <div class="benefits__grid">
-            <div class="benefit-item fade-in">
-                <span class="benefit-item__icon">🌿</span>
-                <h3 class="benefit-item__title">Qualidade de Vida</h3>
-                <p>Aprenda a lidar melhor com o estresse e as pressões do dia a dia.</p>
+        <div class="section__head reveal">
+            <span class="eyebrow eyebrow--center">Por que terapia</span>
+            <h2 class="section__title">O que muda quando você se ouve</h2>
+        </div>
+        <div class="grid grid--4">
+            <div class="card benefit reveal">
+                <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg></div>
+                <h3 class="card__title">Mais leveza</h3>
+                <p class="card__text">Aprenda a lidar com o estresse e as pressões do dia a dia sem carregar tudo
+                    sozinha.</p>
             </div>
-            <div class="benefit-item fade-in">
-                <span class="benefit-item__icon">💚</span>
-                <h3 class="benefit-item__title">Inteligência Emocional</h3>
-                <p>Desenvolva habilidades para reconhecer e gerenciar suas emoções.</p>
+            <div class="card benefit reveal">
+                <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                <h3 class="card__title">Inteligência emocional</h3>
+                <p class="card__text">Desenvolva formas de reconhecer e acolher suas emoções em vez de fugir delas.</p>
             </div>
-            <div class="benefit-item fade-in">
-                <span class="benefit-item__icon">🔄</span>
-                <h3 class="benefit-item__title">Resolução de Conflitos</h3>
-                <p>Encontre novas perspectivas para resolver problemas antigos.</p>
+            <div class="card benefit reveal">
+                <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg></div>
+                <h3 class="card__title">Novas perspectivas</h3>
+                <p class="card__text">Encontre outras saídas para problemas antigos que pareciam não ter solução.</p>
             </div>
-            <div class="benefit-item fade-in">
-                <span class="benefit-item__icon">🧘</span>
-                <h3 class="benefit-item__title">Saúde Mental</h3>
-                <p>Previna e trate condições como ansiedade e depressão com cuidado especializado.</p>
+            <div class="card benefit reveal">
+                <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+                <h3 class="card__title">Saúde mental</h3>
+                <p class="card__text">Cuide e previna quadros como ansiedade e depressão com acompanhamento atento.</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Depoimentos Section -->
-<section class="testimonials section" id="depoimentos">
+<section class="testimonials section section--deep" id="depoimentos">
     <div class="container">
-        <h2 class="section__title text-center">O que dizem os pacientes</h2>
-        <div class="testimonials__grid">
-            <div class="card testimonial-card fade-in">
-                <p class="testimonial-card__text">"A terapia com a Maria Betania transformou a minha vida. Sinto-me muito mais leve e confiante para enfrentar meus desafios."</p>
-                <p class="testimonial-card__author">— A. S., Paciente</p>
+        <div class="section__head reveal">
+            <span class="eyebrow eyebrow--center">Histórias</span>
+            <h2 class="section__title">Quem já atravessou conta</h2>
+        </div>
+        <div class="grid grid--3">
+            <div class="testimonial reveal">
+                <p class="testimonial__text">A terapia com a Betânia transformou minha vida. Sinto-me muito mais leve e
+                    confiante para encarar meus desafios.</p>
+                <p class="testimonial__author">A. S., paciente</p>
             </div>
-            <div class="card testimonial-card fade-in">
-                <p class="testimonial-card__text">"Excelente profissional! Muito atenciosa e acolhedora. Me senti à vontade desde o primeiro dia."</p>
-                <p class="testimonial-card__author">— M. R., Paciente</p>
+            <div class="testimonial reveal">
+                <p class="testimonial__text">Atenciosa e acolhedora do primeiro dia. Me senti à vontade para falar de
+                    coisas que nunca tinha dito em voz alta.</p>
+                <p class="testimonial__author">M. R., paciente</p>
             </div>
-            <div class="card testimonial-card fade-in">
-                <p class="testimonial-card__text">"Recomendo de olhos fechados. A Betania tem uma escuta única — me ajudou a entender padrões que eu repetia sem perceber."</p>
-                <p class="testimonial-card__author">— C. L., Paciente</p>
+            <div class="testimonial reveal">
+                <p class="testimonial__text">Recomendo de olhos fechados. A escuta dela me ajudou a enxergar padrões que
+                    eu repetia sem perceber.</p>
+                <p class="testimonial__author">C. L., paciente</p>
             </div>
         </div>
     </div>
@@ -197,15 +226,19 @@
 <!-- FAQ Section -->
 <section class="faq section" id="faq">
     <div class="container">
-        <h2 class="section__title text-center">Perguntas Frequentes</h2>
-        <div class="accordion">
+        <div class="section__head reveal">
+            <span class="eyebrow eyebrow--center">Dúvidas</span>
+            <h2 class="section__title">Antes da primeira conversa</h2>
+        </div>
+        <div class="accordion reveal">
             <div class="accordion__item">
                 <button class="accordion__trigger" aria-expanded="false">
                     Como funciona o agendamento?
                     <span class="accordion__icon">+</span>
                 </button>
                 <div class="accordion__content">
-                    <p>O agendamento é feito de forma simples pelo WhatsApp. Você entra em contato, verificamos a disponibilidade e marcamos o melhor horário para você.</p>
+                    <p>O agendamento é feito de forma simples pelo WhatsApp. Você entra em contato, verificamos a
+                        disponibilidade e marcamos o melhor horário para você.</p>
                 </div>
             </div>
             <div class="accordion__item">
@@ -214,7 +247,8 @@
                     <span class="accordion__icon">+</span>
                 </button>
                 <div class="accordion__content">
-                    <p>Atualmente trabalho com atendimentos particulares. Emito recibo para solicitação de reembolso junto ao seu convênio, se aplicável.</p>
+                    <p>Atualmente trabalho com atendimentos particulares. Emito recibo para solicitação de reembolso
+                        junto ao seu convênio, se aplicável.</p>
                 </div>
             </div>
             <div class="accordion__item">
@@ -223,7 +257,8 @@
                     <span class="accordion__icon">+</span>
                 </button>
                 <div class="accordion__content">
-                    <p>Cada sessão tem duração média de 50 minutos, tempo ideal para desenvolvermos um trabalho profundo e focado.</p>
+                    <p>Cada sessão tem duração média de 50 minutos, tempo ideal para desenvolvermos um trabalho profundo
+                        e focado.</p>
                 </div>
             </div>
             <div class="accordion__item">
@@ -232,7 +267,8 @@
                     <span class="accordion__icon">+</span>
                 </button>
                 <div class="accordion__content">
-                    <p>Sim! Ofereço atendimento tanto presencial quanto online por videochamada, com a mesma qualidade e cuidado em ambas as modalidades.</p>
+                    <p>Sim! Ofereço atendimento tanto presencial quanto online por videochamada, com a mesma qualidade e
+                        cuidado em ambas as modalidades.</p>
                 </div>
             </div>
         </div>
@@ -241,17 +277,15 @@
 
 <!-- Contato Section -->
 <section class="contact section" id="contato">
-    <div class="container contact__container">
-        <div class="contact__info">
-            <h2 class="section__title text-white">Vamos conversar?</h2>
-            <p>Dê o primeiro passo em direção ao seu bem-estar. Entre em contato para agendar sua consulta ou tirar dúvidas — estou aqui para te ajudar.</p>
-            <div class="contact__actions">
-                <a href="https://wa.me/5521988070905?text=Olá! Gostaria de agendar uma consulta."
-                   class="btn btn--white" target="_blank" rel="noopener noreferrer">
-                    Chamar no WhatsApp
-                </a>
-            </div>
-        </div>
+    <div class="container contact__container reveal">
+        <span class="eyebrow eyebrow--center">O primeiro passo</span>
+        <h2 class="contact__title">Que tal começar com uma <span class="display-italic">conversa</span>?</h2>
+        <p class="contact__text">Mandar a primeira mensagem já é cuidar de você. Me chame no WhatsApp para agendar ou
+            só tirar uma dúvida — respondo pessoalmente, no seu tempo.</p>
+        <a href="https://wa.me/5521988070905?text=Olá! Gostaria de agendar uma conversa."
+           class="btn btn--light" target="_blank" rel="noopener noreferrer">
+            Chamar no WhatsApp
+        </a>
     </div>
 </section>
 
@@ -259,16 +293,16 @@
 <footer class="footer">
     <div class="container footer__container">
         <div class="footer__brand">
-            <h3>Maria Betania</h3>
-            <p>Terapeuta</p>
+            <h3>Maria Betânia<span>.</span></h3>
+            <p>Psicoterapia acolhedora, presencial e online, no Rio de Janeiro.</p>
         </div>
         <div class="footer__links">
-            <h4>Links Úteis</h4>
+            <h4>Navegar</h4>
             <ul>
                 <li><a href="#home">Início</a></li>
                 <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#servicos">Serviços</a></li>
-                <li><a href="#contato">Contato</a></li>
+                <li><a href="#servicos">Como ajudo</a></li>
+                <li><a href="#contato">Agendar</a></li>
             </ul>
         </div>
         <div class="footer__social">
@@ -278,7 +312,7 @@
         </div>
     </div>
     <div class="footer__bottom">
-        <p>&copy; 2025 Maria Betania. Todos os direitos reservados.</p>
+        <p>&copy; 2025 Maria Betânia. Todos os direitos reservados.</p>
     </div>
 </footer>
 

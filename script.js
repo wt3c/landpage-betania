@@ -67,5 +67,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => fadeObserver.observe(el));
 });
