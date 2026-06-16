@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade | Maria Betânia — Terapia Online</title>
+    <meta name="description" content="Política de Privacidade e proteção de dados sensíveis de saúde — Maria Betânia Terapia Online. Sigilo absoluto e conformidade com a LGPD.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://mariabetaniaterapeuta.com.br/politica-de-privacidade.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+        :root {
+            --bg:        #F5F2EC;
+            --bg-soft:   #FBF9F5;
+            --bg-alt:    #EFEBE3;
+            --surface:   #FFFFFF;
+            --ink:       #2A2825;
+            --muted:     #645F57;
+            --gold:      #C0A04E;
+            --gold-deep: #8C6E24;
+            --gold-light:#D8B664;
+            --dark:      #211E1A;
+            --cream:     #F3EFE7;
+            --line:      rgba(42, 40, 37, 0.12);
+            --success:   #25D366;
+
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Hanken Grotesk', system-ui, sans-serif;
+
+            --container: 800px;
+            --header-h: 72px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius-sm: 12px;
+            --radius-md: 20px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--ink);
+            line-height: 1.8;
+            background-color: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: var(--gold-deep); text-decoration: underline; transition: color var(--transition); }
+        a:hover { color: var(--gold); }
+        img { max-width: 100%; display: block; }
+
+        :focus-visible {
+            outline: 3px solid var(--gold-deep);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        /* ---------- Header ---------- */
+        .header {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: var(--header-h);
+            background-color: rgba(245, 242, 236, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--line);
+        }
+        .header__container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 2rem;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--ink);
+            text-decoration: none;
+        }
+        .logo span { color: var(--gold-deep); }
+
+        .back-link {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--muted);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            transition: color var(--transition);
+        }
+        .back-link:hover { color: var(--gold-deep); }
+        .back-link svg { width: 16px; height: 16px; }
+
+        /* ---------- Layout ---------- */
+        .main {
+            padding-top: calc(var(--header-h) + 3.5rem);
+            padding-bottom: 5rem;
+        }
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ---------- Hero da política ---------- */
+        .policy-hero {
+            margin-bottom: 3.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--line);
+        }
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.74rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gold-deep);
+            margin-bottom: 1rem;
+        }
+        .eyebrow::before {
+            content: '';
+            width: 26px;
+            height: 1.5px;
+            background-color: var(--gold);
+        }
+        .policy-hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 400;
+            line-height: 1.15;
+            color: var(--ink);
+            margin-bottom: 1rem;
+        }
+        .policy-hero h1 em {
+            font-style: italic;
+            color: var(--gold-deep);
+        }
+        .policy-meta {
+            font-size: 0.88rem;
+            color: var(--muted);
+            margin-top: 1rem;
+        }
+
+        /* ---------- Conteúdo ---------- */
+        .policy-body {
+            display: grid;
+            gap: 2.8rem;
+        }
+
+        .policy-section h2 {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: var(--ink);
+            margin-bottom: 0.9rem;
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+        }
+        .policy-section h2 .num {
+            font-style: italic;
+            color: var(--gold);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .policy-section p {
+            color: var(--muted);
+            font-size: 1rem;
+            margin-bottom: 0.9rem;
+        }
+        .policy-section p:last-child { margin-bottom: 0; }
+        .policy-section p strong { color: var(--ink); font-weight: 600; }
+
+        .policy-section ul {
+            list-style: none;
+            display: grid;
+            gap: 0.6rem;
+            margin: 0.6rem 0 0.9rem;
+        }
+        .policy-section ul li {
+            color: var(--muted);
+            font-size: 1rem;
+            padding-left: 1.4rem;
+            position: relative;
+        }
+        .policy-section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6em;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--gold);
+        }
+
+        /* Destaque — dado sensível de saúde */
+        .callout {
+            background: var(--surface);
+            border: 1px solid rgba(192, 160, 78, 0.35);
+            border-left: 3px solid var(--gold);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1.3rem 1.5rem;
+            margin: 1rem 0;
+        }
+        .callout p {
+            margin: 0;
+            font-size: 0.98rem;
+            color: var(--ink) !important;
+        }
+        .callout strong { color: var(--gold-deep) !important; }
+
+        /* Tabela de direitos LGPD */
+        .rights-grid {
+            display: grid;
+            gap: 0.8rem;
+            margin-top: 0.8rem;
+        }
+        .right-item {
+            background: var(--bg-soft);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.2rem;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0.8rem;
+            align-items: start;
+        }
+        .right-item__icon {
+            width: 36px; height: 36px;
+            border-radius: 10px;
+            background: linear-gradient(140deg, rgba(216,182,100,0.28), rgba(192,160,78,0.16));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-deep);
+            flex-shrink: 0;
+        }
+        .right-item__icon svg { width: 18px; height: 18px; }
+        .right-item__title {
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--ink);
+            margin-bottom: 0.2rem;
+        }
+        .right-item__desc {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        /* Divisor */
+        .divider {
+            border: none;
+            border-top: 1px solid var(--line);
+        }
+
+        /* Faixa de contato */
+        .contact-bar {
+            background: var(--dark);
+            border-radius: var(--radius-md);
+            padding: 2rem 2.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .contact-bar__text h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--cream);
+            margin-bottom: 0.3rem;
+        }
+        .contact-bar__text p {
+            font-size: 0.9rem;
+            color: rgba(243,239,231,0.65);
+            margin: 0;
+        }
+        .contact-bar a {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            background: var(--gold);
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 12px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background-color var(--transition), transform var(--transition);
+        }
+        .contact-bar a:hover {
+            background-color: var(--gold-light);
+            transform: translateY(-2px);
+        }
+        .contact-bar a svg { width: 18px; height: 18px; }
+
+        /* ---------- Rodapé ---------- */
+        .footer {
+            background-color: #1A1714;
+            color: rgba(243,239,231,0.42);
+            text-align: center;
+            padding: 28px 1rem;
+            font-size: 0.84rem;
+        }
+        .footer a { color: rgba(216,182,100,0.8); }
+
+        /* ---------- Responsivo ---------- */
+        @media (max-width: 600px) {
+            .container { padding: 0 1.25rem; }
+            .contact-bar { flex-direction: column; }
+            .contact-bar a { width: 100%; justify-content: center; }
+            .header__container { padding: 0 1.25rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition-duration: 0.001ms !important; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header__container">
+        <a href="index.html" class="logo">Maria Betânia<span>.</span></a>
+        <a href="index.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            Voltar ao site
+        </a>
+    </div>
+</header>
+
+<main class="main">
+    <div class="container">
+
+        <div class="policy-hero">
+            <span class="eyebrow">Transparência e cuidado</span>
+            <h1>Política de <em>Privacidade</em> e Proteção de Dados</h1>
+            <p style="color:var(--muted); font-size:1.05rem; max-width:56ch;">
+                Aqui você encontra, de forma clara, como seus dados são coletados, usados e protegidos — com o mesmo sigilo absoluto que norteia cada atendimento.
+            </p>
+            <p class="policy-meta">
+                Responsável: <strong style="color:var(--ink)">Maria Betânia</strong> &nbsp;·&nbsp;
+                CNPJ: 35.241.539/0001-99 &nbsp;·&nbsp;
+                Última atualização: junho de 2026
+            </p>
+        </div>
+
+        <div class="policy-body">
+
+            <!-- 1. Quem somos -->
+            <section class="policy-section">
+                <h2><span class="num">1.</span> Quem somos e o que fazemos</h2>
+                <p>
+                    Maria Betânia é terapeuta especializada em <strong>Terapia de Reprocessamento Generativo (TRG)</strong>,
+                    com atendimento 100% online para todo o Brasil e exterior. Esta política descreve como tratamos os
+                    dados pessoais de quem acessa nosso site ou agenda uma sessão, em conformidade com a
+                    <strong>Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018)</strong>.
+                </p>
+                <p>
+                    O sigilo absoluto não é apenas uma obrigação legal — é um compromisso ético fundamental da prática
+                    terapêutica. Tudo o que você compartilha permanece protegido.
+                </p>
+            </section>
+
+            <hr class="divider">
+
+            <!-- 2. Dados coletados -->
+            <section class="policy-section">
+                <h2><span class="num">2.</span> Quais dados coletamos</h2>
+                <p>Coletamos apenas as informações estritamente necessárias para prestar o serviço com qualidade e segurança:</p>
+
+                <p><strong>Dados de identificação e contato:</strong></p>
+                <ul>
+                    <li>Nome completo</li>
+                    <li>Número de WhatsApp</li>
+                    <li>Endereço de e-mail</li>
+                    <li>País e fuso horário (para agendamento online)</li>
+                </ul>
+
+                <p><strong>Dados sensíveis de saúde (Art. 11 da LGPD):</strong></p>
+                <div class="callout">
+                    <p>
+                        <strong>Atenção especial:</strong> informações compartilhadas durante as sessões — como histórico emocional,
+                        sintomas, traumas, diagnósticos e queixas de saúde — são classificadas como
+                        <strong>dados pessoais sensíveis</strong> pela LGPD. Esses dados recebem o nível máximo de proteção
+                        e são tratados exclusivamente para a finalidade terapêutica, com seu consentimento explícito.
+                    </p>
+                </div>
+
+                <p><strong>Dados de navegação (quando você acessa este site):</strong></p>
+                <ul>
+                    <li>Endereço IP (anonimizado)</li>
+                    <li>Tipo de dispositivo e navegador</li>
+                    <li>Páginas visitadas e tempo de permanência</li>
+                    <li>Origem do acesso (mecanismo de busca, link direto etc.)</li>
+                </ul>
+            </section>
+
+            <hr class="divider">
+
+            <!-- 3. Como usamos -->
+            <section class="policy-section">
+                <h2><span class="num">3.</span> Como e por que usamos seus dados</h2>
+                <p>Seus dados são usados exclusivamente para as finalidades abaixo:</p>
+                <ul>
+                    <li><strong>Agendamento e confirmação de sessões</strong> — via WhatsApp e Calendly</li>
+                    <li><strong>Prestação do serviço terapêutico</strong> — condução das sessões online</li>
+                    <li><strong>Comunicação de acompanhamento</strong> — lembretes e retorno sobre dúvidas enviadas</li>
+                    <li><strong>Cumprimento de obrigações legais</strong> — quando exigido por lei ou autoridade competente</li>
+                    <li><strong>Melhoria do site</strong> — análise de navegação de forma agregada e anônima</li>
+                </ul>
+                <p>
+                    <strong>Não utilizamos seus dados para marketing de terceiros, não vendemos informações e não
+                    fazemos perfilamento automatizado.</strong>
+                </p>
+            </section>
+
+            <hr class="divider">
+
+            <!-- 4. Sigilo e saúde -->
+            <section class="policy-section">
+                <h2><span class="num">4.</span> Sigilo absoluto nos dados de saúde</h2>
+                <p>
+                    O sigilo terapêutico é um dever ético e legal. Tudo o que é compartilhado dentro do espaço de
+                    atendimento — sentimentos, histórias, diagnósticos, traumas — está protegido por:
+                </p>
+                <ul>
+                    <li>Ética profissional e compromisso pessoal da terapeuta</li>
+                    <li>LGPD — Art. 11, que confere proteção reforçada aos dados sensíveis de saúde</li>
+                    <li>Código de Ética aplicável às práticas terapêuticas</li>
+                </ul>
+                <div class="callout">
+                    <p>
+                        <strong>Não há quebra de sigilo</strong> exceto nas situações previstas em lei:
+                        risco grave e iminente à vida do titular ou de terceiros, ou determinação judicial expressa.
+                        Mesmo nesses casos, você será informada sempre que possível.
+                    </p>
+                </div>
+                <p>
+                    As sessões online são realizadas por plataformas de videoconferência com criptografia. Nenhuma
+                    sessão é gravada sem seu consentimento expresso e por escrito.
+                </p>
+            </section>
+
+            <hr class="divider">
+
+            <!-- 5. Compartilhamento -->
+            <section class="policy-section">
+                <h2><span class="num">5.</span> Compartilhamento de dados</h2>
+                <p>
+                    <strong>Seus dados não são vendidos, alugados ou compartilhados com terceiros para fins
+                    comerciais.</strong> O acesso é restrito à terapeuta responsável pelo atendimento.
+                </p>
+                <p>Utilizamos ferramentas de terceiros estritamente necessárias para a operação do serviço:</p>
+                <ul>
+                    <li><strong>WhatsApp Business (Meta)</strong> — comunicação e agendamento inicial</li>
+                    <li><strong>Calendly</strong> — agendamento seguro de sessões</li>
+                    <li><strong>Google (Meet / Gmail)</strong> — realização das sessões online e e-mail</li>
+                    <li><strong>Processadores de pagamento (PIX / operadoras de cartão)</strong> — confirmação financeira</li>
+                </ul>
+                <p>
+                    Cada um desses serviços possui sua própria política de privacidade e está sujeito à legislação
+                    aplicável. Escolhemos apenas ferramentas que adotam práticas de segurança reconhecidas.
+                </p>
+            </section>
+
+            <hr class="divider">
+
+            <!-- 6. Retenção -->
+            <section class="policy-section">
+                <h2><span class="num">6.</span> Por quanto tempo guardamos seus dados</h2>
+                <p>
+                    Mantemos seus dados pelo tempo necessário para a prestação do serviço e pelo período exigido
+                    por obrigações legais:
+                </p>
+                <ul>
+                    <li><strong>Dados de contato e agendamento:</strong> enquanto houver vínculo terapêutico ativo e por até 5 anos após o encerramento</li>
+                    <li><strong>Registros de sessão:</strong> mínimo de 5 anos, conforme boas práticas clínicas e obrigações legais</li>
+                    <li><strong>Dados de navegação:</strong> até 12 meses, de forma anonimizada</li>
+                </ul>
+                <p>
+                    Após o prazo aplicável, os dados são eliminados de forma segura e irreversível.
+                </p>
+            </section>
+
+            <hr class="divider">
+
+            <!-- 7. Seus direitos -->
+            <section class="policy-section">
+                <h2><span class="num">7.</span> Seus direitos como titular dos dados</h2>
+                <p>A LGPD garante a você, a qualquer momento, os seguintes direitos:</p>
+
+                <div class="rights-grid">
+                    <div class="right-item">
+                        <div class="right-item__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        </div>
+                        <div>
+                            <div class="right-item__title">Acesso</div>
+                            <div class="right-item__desc">Saber quais dados temos sobre você e como são tratados.</div>
+                        </div>
+                    </div>
+                    <div class="right-item">
+                        <div class="right-item__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                        </div>
+                        <div>
+                            <div class="right-item__title">Correção</div>
+                            <div class="right-item__desc">Corrigir dados incompletos, inexatos ou desatualizados.</div>
+                        </div>
+                    </div>
+                    <div class="right-item">
+                        <div class="right-item__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path><path d="M10 11v6"></path><path d="M14 11v6"></path></svg>
+                        </div>
+                        <div>
+                            <div class="right-item__title">Eliminação</div>
+                            <div class="right-item__desc">Solicitar a exclusão dos dados tratados com base no seu consentimento, respeitados os prazos legais.</div>
+                        </div>
+                    </div>
+                    <div class="right-item">
+                        <div class="right-item__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+                        </div>
+                        <div>
+                            <div class="right-item__title">Revogação do consentimento</div>
+                            <div class="right-item__desc">Retirar seu consentimento a qualquer momento, sem prejuízo do tratamento já realizado.</div>
+                        </div>
+                    </div>
+                    <div class="right-item">
+                        <div class="right-item__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="11" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </div>
+                        <div>
+                            <div class="right-item__title">Portabilidade</div>
+                            <div class="right-item__desc">Receber seus dados em formato estruturado para uso em outro serviço.</div>
+                        </div>
+                    </div>
+                    <div class="right-item">
+                        <div class="right-item__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        </div>
+                        <div>
+                            <div class="right-item__title">Informação sobre compartilhamento</div>
+                            <div class="right-item__desc">Saber com quais entidades públicas ou privadas compartilhamos seus dados.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="margin-top:1.2rem;">
+                    Para exercer qualquer um desses direitos, entre em contato pelo e-mail
+                    <a href="mailto:mariabetania4020@gmail.com">mariabetania4020@gmail.com</a>. Respondemos em até
+                    <strong>15 dias úteis</strong>.
+                </p>
+            </section>
+
+            <hr class="divider">
+
+            <!-- 8. Segurança -->
+            <section class="policy-section">
+                <h2><span class="num">8.</span> Medidas de segurança</h2>
+                <p>
+                    Adotamos medidas técnicas e organizacionais para proteger seus dados contra acesso não autorizado,
+                    perda, alteração ou divulgação indevida:
+                </p>
+                <ul>
+                    <li>Comunicações via HTTPS (criptografia em trânsito)</li>
+                    <li>Plataformas de videoconferência com criptografia ponta a ponta</li>
+                    <li>Acesso restrito e controlado às informações de cada cliente</li>
+                    <li>Nenhuma sessão gravada sem consentimento expresso e por escrito</li>
+                    <li>Revisão periódica das práticas de segurança</li>
+                </ul>
+                <p>
+                    Em caso de incidente de segurança que possa afetar seus dados, você será notificada dentro do
+                    prazo previsto pela LGPD, com descrição do ocorrido e das medidas adotadas.
+                </p>
+            </section>
+
+            <hr class="divider">
+
+            <!-- 9. Cookies -->
+            <section class="policy-section">
+                <h2><span class="num">9.</span> Cookies e rastreamento</h2>
+                <p>
+                    Este site pode utilizar cookies técnicos essenciais para o funcionamento das páginas. Não usamos
+                    cookies de publicidade comportamental nem redes de rastreamento de terceiros para fins comerciais.
+                </p>
+                <p>
+                    Você pode configurar seu navegador para bloquear ou excluir cookies. Algumas funcionalidades do
+                    site podem ser afetadas por essa configuração.
+                </p>
+            </section>
+
+            <hr class="divider">
+
+            <!-- 10. Alterações -->
+            <section class="policy-section">
+                <h2><span class="num">10.</span> Alterações nesta política</h2>
+                <p>
+                    Esta política pode ser atualizada periodicamente para refletir mudanças nos serviços, na
+                    legislação ou nas boas práticas de privacidade. A data da última atualização sempre estará
+                    indicada no topo desta página.
+                </p>
+                <p>
+                    Em caso de alterações relevantes que afetem dados sensíveis de saúde, você será notificada
+                    por e-mail ou WhatsApp antes que as mudanças entrem em vigor.
+                </p>
+            </section>
+
+            <hr class="divider">
+
+            <!-- 11. Contato -->
+            <section class="policy-section">
+                <h2><span class="num">11.</span> Contato e exercício dos seus direitos</h2>
+                <p>
+                    Para dúvidas sobre esta política, para exercer seus direitos como titular ou para tratar
+                    qualquer questão relacionada à privacidade dos seus dados:
+                </p>
+                <div class="contact-bar">
+                    <div class="contact-bar__text">
+                        <h3>Fale com a responsável pelos dados</h3>
+                        <p>Maria Betânia · mariabetania4020@gmail.com · Resp. em até 15 dias úteis</p>
+                    </div>
+                    <a href="mailto:mariabetania4020@gmail.com">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        Enviar e-mail
+                    </a>
+                </div>
+                <p style="margin-top:1.2rem;">
+                    Caso sua solicitação não seja atendida de forma satisfatória, você tem o direito de peticionar
+                    à <strong>Autoridade Nacional de Proteção de Dados (ANPD)</strong> — <a href="https://www.gov.br/anpd" target="_blank" rel="noopener noreferrer">www.gov.br/anpd</a>.
+                </p>
+            </section>
+
+        </div><!-- /policy-body -->
+    </div><!-- /container -->
+</main>
+
+<footer class="footer">
+    <p>&copy; 2026 Maria Betânia — CNPJ 35.241.539/0001-99 &nbsp;·&nbsp;
+       <a href="index.html">Voltar ao site</a>
+    </p>
+</footer>
+
+</body>
+</html>
