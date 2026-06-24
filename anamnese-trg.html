@@ -120,6 +120,21 @@
             outline-offset: 2px;
         }
 
+        .btn:disabled {
+            opacity: .45;
+            cursor: not-allowed;
+            background: var(--paper);
+        }
+
+        .save-status {
+            font-family: "Inter", sans-serif;
+            font-size: 12px;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            margin-right: auto;
+        }
+
         /* ---------- capa ---------- */
         .cover {
             background: var(--paper);
@@ -712,8 +727,10 @@
 <div class="progress" id="progress" aria-hidden="true"></div>
 
 <div class="toolbar">
+    <span class="save-status" id="saveStatus">Suas respostas são salvas automaticamente neste navegador.</span>
     <button class="btn" id="modeBtn" type="button">Modo paciente (ocultar anexo)</button>
-    <button class="btn" id="printBtn" type="button">Imprimir / Salvar em PDF</button>
+    <button class="btn" id="printBtn" type="button" disabled title="Disponível a partir de 90% do formulário preenchido">Imprimir / Salvar em PDF</button>
+    <button class="btn" id="sendBtn" type="button" disabled title="Disponível a partir de 90% do formulário preenchido">Enviar pelo WhatsApp</button>
 </div>
 
 <div class="wrap">
@@ -1492,8 +1509,100 @@
 </div>
 
 <script>
-    document.getElementById('printBtn').addEventListener('click', function () {
+    // ---------- Autosave em localStorage ----------
+    var STORAGE_KEY = 'anamnese-trg-autosave';
+    var fields = Array.prototype.slice.call(document.querySelectorAll('.wrap [name]'));
+    var fieldNames = fields.reduce(function (names, el) {
+        if (names.indexOf(el.name) === -1) names.push(el.name);
+        return names;
+    }, []);
+    var saveStatus = document.getElementById('saveStatus');
+
+    function loadDraft() {
+        try {
+            return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+        } catch (e) {
+            return {};
+        }
+    }
+
+    function restoreDraft() {
+        var draft = loadDraft();
+        fields.forEach(function (el) {
+            if (!(el.name in draft)) return;
+            if (el.type === 'checkbox') {
+                el.checked = !!draft[el.name];
+            } else if (el.type === 'radio') {
+                el.checked = el.value === draft[el.name];
+            } else {
+                el.value = draft[el.name];
+            }
+        });
+    }
+
+    function saveDraft() {
+        var draft = {};
+        fields.forEach(function (el) {
+            if (el.type === 'checkbox') {
+                draft[el.name] = el.checked;
+            } else if (el.type === 'radio') {
+                if (el.checked) draft[el.name] = el.value;
+            } else {
+                draft[el.name] = el.value;
+            }
+        });
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(draft));
+        var time = new Date().toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit'});
+        saveStatus.textContent = 'Rascunho salvo às ' + time + '.';
+    }
+
+    // ---------- Progresso de preenchimento (libera impressão/envio em 90%) ----------
+    var printBtn = document.getElementById('printBtn');
+    var sendBtn = document.getElementById('sendBtn');
+    var COMPLETION_THRESHOLD = 0.9;
+
+    function isFieldAnswered(name) {
+        var group = fields.filter(function (el) { return el.name === name; });
+        var first = group[0];
+        if (first.type === 'checkbox' || first.type === 'radio') {
+            return group.some(function (el) { return el.checked; });
+        }
+        return group.some(function (el) { return el.value.trim().length > 0; });
+    }
+
+    function updateCompletion() {
+        var answered = fieldNames.filter(isFieldAnswered).length;
+        var pct = answered / fieldNames.length;
+        var unlocked = pct >= COMPLETION_THRESHOLD;
+        printBtn.disabled = !unlocked;
+        sendBtn.disabled = !unlocked;
+        var title = unlocked ? '' : 'Disponível a partir de 90% do formulário preenchido (' + Math.round(pct * 100) + '% concluído)';
+        printBtn.title = title;
+        sendBtn.title = title;
+    }
+
+    document.addEventListener('input', function (e) {
+        if (!e.target.name) return;
+        saveDraft();
+        updateCompletion();
+    });
+    document.addEventListener('change', function (e) {
+        if (!e.target.name) return;
+        saveDraft();
+        updateCompletion();
+    });
+
+    restoreDraft();
+    updateCompletion();
+
+    // ---------- Ações finais ----------
+    printBtn.addEventListener('click', function () {
         window.print();
+    });
+
+    sendBtn.addEventListener('click', function () {
+        var text = encodeURIComponent('Olá, Maria Betânia. Preenchi minha anamnese terapêutica e vou enviar o PDF em anexo.');
+        window.open('https://wa.me/5521988070905?text=' + text, '_blank');
     });
 
     var modeBtn = document.getElementById('modeBtn');
