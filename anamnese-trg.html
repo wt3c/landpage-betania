@@ -135,6 +135,16 @@
             margin-right: auto;
         }
 
+        .toolbar-hint {
+            max-width: var(--maxw);
+            margin: 6px auto 0;
+            padding: 0 20px;
+            text-align: right;
+            font-family: "Inter", sans-serif;
+            font-size: 12px;
+            color: var(--muted);
+        }
+
         /* ---------- capa ---------- */
         .cover {
             background: var(--paper);
@@ -678,7 +688,7 @@
                 font-size: 12pt;
             }
 
-            .toolbar, .progress {
+            .toolbar, .toolbar-hint, .progress {
                 display: none !important;
             }
 
@@ -732,6 +742,7 @@
     <button class="btn" id="printBtn" type="button" disabled title="Disponível a partir de 90% do formulário preenchido">Imprimir / Salvar em PDF</button>
     <button class="btn" id="sendBtn" type="button" disabled title="Disponível a partir de 90% do formulário preenchido">Enviar pelo WhatsApp</button>
 </div>
+<p class="toolbar-hint">1. Salve o PDF → 2. Envie esta conversa e anexe o PDF salvo.</p>
 
 <div class="wrap">
 
@@ -1601,7 +1612,7 @@
     });
 
     sendBtn.addEventListener('click', function () {
-        var text = encodeURIComponent('Olá, Maria Betânia. Preenchi minha anamnese terapêutica e vou enviar o PDF em anexo.');
+        var text = encodeURIComponent('Olá, Maria Betânia. Preenchi minha anamnese terapêutica e vou anexar o PDF nesta conversa.');
         window.open('https://wa.me/5521988070905?text=' + text, '_blank');
     });
 
