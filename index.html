@@ -9,7 +9,7 @@
     <meta name="description"
           content="Terapeuta online especializada em Terapia de Reprocessamento Generativo (TRG). Atendimento para ansiedade, esgotamento emocional e traumas, com acolhimento e sigilo absoluto. Para todo o Brasil e exterior.">
     <meta name="keywords"
-          content="terapeuta online, terapia para ansiedade online, TRG online, terapia de reprocessamento generativo, terapia online, esgotamento emocional, sigilo absoluto">
+          content="terapeuta, terapeuta online, terapia, terapia online, terapia para ansiedade, ansiedade, TRG, terapia de reprocessamento generativo, reprocessamento emocional, esgotamento emocional, burnout, trauma, terapia psicossomática, psicossomática, saúde mental, bem-estar emocional, sigilo absoluto">
     <meta name="author" content="Maria Betânia">
     <meta name="robots" content="index, follow">
 
@@ -20,14 +20,14 @@
     <meta property="og:title" content="Maria Betânia | Terapia Online para Ansiedade e TRG">
     <meta property="og:description"
           content="Recupere sua paz emocional e resgate a sua identidade. Terapia online especializada (TRG), com acolhimento e total sigilo. Para todo o Brasil e exterior.">
-    <meta property="og:image" content="https://mariabetaniaterapeuta.com.br/og-image.jpg">
+    <meta property="og:image" content="https://mariabetaniaterapeuta.com.br/IMG-20250110-WA0171.jpg">
 
     <!-- ====================== Twitter ====================== -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Maria Betânia | Terapia Online para Ansiedade e TRG">
     <meta name="twitter:description"
           content="Terapia online especializada (TRG), com acolhimento e sigilo absoluto. Para todo o Brasil e exterior.">
-    <meta name="twitter:image" content="https://mariabetaniaterapeuta.com.br/og-image.jpg">
+    <meta name="twitter:image" content="https://mariabetaniaterapeuta.com.br/IMG-20250110-WA0171.jpg">
 
     <link rel="canonical" href="https://mariabetaniaterapeuta.com.br/">
 
@@ -44,12 +44,77 @@
         "@type": "MedicalBusiness",
         "name": "Maria Betânia — Terapia Online",
         "description": "Atendimento terapêutico online especializado em Terapia de Reprocessamento Generativo (TRG), reprocessamento emocional e abordagem psicossomática.",
-        "image": "https://mariabetaniaterapeuta.com.br/og-image.jpg",
+        "image": "https://mariabetaniaterapeuta.com.br/IMG-20250110-WA0171.jpg",
         "url": "https://mariabetaniaterapeuta.com.br/",
         "telephone": "+5521988070905",
         "areaServed": "Brasil e exterior",
         "availableLanguage": "Portuguese",
-        "medicalSpecialty": "Psychotherapy"
+        "medicalSpecialty": "Psychotherapy",
+        "priceRange": "$$",
+        "knowsAbout": ["Terapia", "Terapeuta", "Ansiedade", "Terapia de Reprocessamento Generativo (TRG)", "Trauma", "Esgotamento emocional", "Burnout", "Psicossomática", "Saúde mental"],
+        "employee": {
+            "@type": "Person",
+            "name": "Maria Betânia",
+            "jobTitle": "Terapeuta",
+            "knowsAbout": ["Terapia de Reprocessamento Generativo (TRG)", "Ansiedade", "Trauma", "Psicossomática", "Burnout"]
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "O que é a Terapia de Reprocessamento Generativo (TRG)?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A TRG é uma abordagem terapêutica que ajuda a acessar e reorganizar emoções e memórias que ficaram travadas. Em vez de apenas falar sobre o problema, a terapia trabalha na raiz emocional, para que aquilo que pesa deixe de comandar o presente."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Terapia online funciona para ansiedade?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sim. O atendimento terapêutico 100% online é indicado para ansiedade, esgotamento emocional (burnout) e traumas, com o mesmo cuidado e sigilo de uma sessão presencial."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Como funciona o sigilo no atendimento online?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Todo o atendimento é conduzido com sigilo absoluto, em um espaço seguro e livre de julgamentos, do primeiro contato até a última sessão."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Quem pode fazer terapia com a Maria Betânia?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Pessoas de todo o Brasil e do exterior, já que o atendimento é 100% online, indicado para quem lida com ansiedade, esgotamento emocional, traumas ou questões psicossomáticas."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Como funciona o agendamento e o pagamento da terapia?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "O primeiro contato é feito pelo WhatsApp. Depois, você escolhe o melhor dia e horário, e a confirmação da sessão é feita com pagamento antecipado por PIX ou cartão."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "A TRG ajuda com trauma e esgotamento emocional (burnout)?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sim. A Terapia de Reprocessamento Generativo é voltada justamente para reprocessar traumas e bloqueios profundos, além de apoiar o manejo de esgotamento emocional e burnout."
+                }
+            }
+        ]
     }
     </script>
 
@@ -614,6 +679,44 @@
         }
         .steps__note strong { color: var(--gold-deep); }
 
+        /* ---------- FAQ ---------- */
+        .faq {
+            max-width: 760px;
+            margin: 0 auto;
+            display: grid;
+            gap: 1rem;
+        }
+        .faq__item {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            padding: 0.4rem 1.6rem;
+        }
+        .faq__item summary {
+            cursor: pointer;
+            list-style: none;
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            padding: 1.2rem 1.8rem 1.2rem 0;
+            position: relative;
+        }
+        .faq__item summary::-webkit-details-marker { display: none; }
+        .faq__item summary::after {
+            content: '+';
+            position: absolute;
+            right: 0;
+            top: 1.1rem;
+            font-size: 1.4rem;
+            color: var(--gold-deep);
+            transition: transform var(--transition);
+        }
+        .faq__item[open] summary::after { transform: rotate(45deg); }
+        .faq__item p {
+            color: var(--muted);
+            padding-bottom: 1.4rem;
+            margin-top: -0.4rem;
+        }
+
         /* ---------- Faixa de sigilo (reforço) ---------- */
         .assurance {
             text-align: center;
@@ -843,6 +946,7 @@
                 <li><a href="#sobre" class="nav__link">A terapeuta</a></li>
                 <li><a href="#formacao" class="nav__link">Formação</a></li>
                 <li><a href="#como-funciona" class="nav__link">Como funciona</a></li>
+                <li><a href="#faq" class="nav__link">Dúvidas</a></li>
                 <!-- Calendly temporariamente desativado
                 <li>
                     <a href="https://calendly.com/mariabetaniaterapeuta/"
@@ -863,7 +967,7 @@
         <div class="hero__content reveal">
             <span class="eyebrow">Terapia online · TRG</span>
             <h1 class="hero__title">Recupere sua paz emocional e resgate a sua <span class="display-italic">identidade</span>.</h1>
-            <p class="hero__subtitle">Atendimento terapêutico especializado para quem carrega ansiedade, esgotamento
+            <p class="hero__subtitle">Terapia online especializada para quem carrega ansiedade, esgotamento emocional
                 e feridas que ninguém vê. Um espaço seguro, livre de julgamentos e com <strong>sigilo absoluto</strong> —
                 100% online, para todo o Brasil e exterior.</p>
             <div class="hero__actions">
@@ -1103,6 +1207,56 @@
         <p class="steps__note">O agendamento e a confirmação acontecem por um <strong>link seguro</strong>, com
             pagamento antecipado via PIX ou cartão. Tudo pensado para que você se sinta tranquila do primeiro contato à
             última sessão.</p>
+    </div>
+</section>
+
+<!-- ============================== 4.5 FAQ ============================== -->
+<section class="section section--soft" id="faq">
+    <div class="container">
+        <div class="section__head reveal">
+            <span class="eyebrow eyebrow--center">Dúvidas frequentes</span>
+            <h2 class="section__title">Sobre terapia, TRG e o atendimento online</h2>
+            <p class="section__lead">Respostas diretas para quem está conhecendo a Terapia de
+                Reprocessamento Generativo e considerando começar uma terapia online.</p>
+        </div>
+        <div class="faq reveal">
+            <details class="faq__item">
+                <summary>O que é a Terapia de Reprocessamento Generativo (TRG)?</summary>
+                <p>A TRG é uma abordagem terapêutica que ajuda a acessar e reorganizar emoções e
+                    memórias que ficaram travadas. Em vez de apenas falar sobre o problema, a
+                    terapia trabalha na raiz emocional, para que aquilo que pesa deixe de comandar
+                    o presente.</p>
+            </details>
+            <details class="faq__item">
+                <summary>Terapia online funciona para ansiedade?</summary>
+                <p>Sim. O atendimento terapêutico 100% online é indicado para ansiedade,
+                    esgotamento emocional (burnout) e traumas, com o mesmo cuidado e sigilo de uma
+                    sessão presencial.</p>
+            </details>
+            <details class="faq__item">
+                <summary>Como funciona o sigilo no atendimento online?</summary>
+                <p>Todo o atendimento é conduzido com sigilo absoluto, em um espaço seguro e livre
+                    de julgamentos, do primeiro contato até a última sessão.</p>
+            </details>
+            <details class="faq__item">
+                <summary>Quem pode fazer terapia com a Maria Betânia?</summary>
+                <p>Pessoas de todo o Brasil e do exterior, já que o atendimento é 100% online,
+                    indicado para quem lida com ansiedade, esgotamento emocional, traumas ou
+                    questões psicossomáticas.</p>
+            </details>
+            <details class="faq__item">
+                <summary>Como funciona o agendamento e o pagamento da terapia?</summary>
+                <p>O primeiro contato é feito pelo WhatsApp. Depois, você escolhe o melhor dia e
+                    horário, e a confirmação da sessão é feita com pagamento antecipado por PIX ou
+                    cartão.</p>
+            </details>
+            <details class="faq__item">
+                <summary>A TRG ajuda com trauma e esgotamento emocional (burnout)?</summary>
+                <p>Sim. A Terapia de Reprocessamento Generativo é voltada justamente para
+                    reprocessar traumas e bloqueios profundos, além de apoiar o manejo de
+                    esgotamento emocional e burnout.</p>
+            </details>
+        </div>
     </div>
 </section>
 

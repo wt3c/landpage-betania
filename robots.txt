@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mariabetaniaterapeuta.com.br/sitemap.xml
