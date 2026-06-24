@@ -120,6 +120,11 @@
             outline-offset: 2px;
         }
 
+        .toolbar--bottom {
+            margin-top: 8px;
+            padding: 0 20px 36px;
+        }
+
         .btn:disabled {
             opacity: .45;
             cursor: not-allowed;
@@ -743,9 +748,9 @@
 
 <div class="toolbar">
     <span class="save-status" id="saveStatus">Suas respostas são salvas automaticamente neste navegador.</span>
-    <button class="btn" id="modeBtn" type="button">Modo paciente (ocultar anexo)</button>
-    <button class="btn" id="printBtn" type="button" disabled title="Disponível a partir de 90% do formulário preenchido">Imprimir / Salvar em PDF</button>
-    <button class="btn" id="sendBtn" type="button" disabled title="Disponível a partir de 90% do formulário preenchido">Enviar pelo WhatsApp</button>
+    <button class="btn js-mode-btn" type="button">Modo paciente (ocultar anexo)</button>
+    <button class="btn js-print-btn" type="button" disabled title="Disponível a partir de 90% do formulário preenchido">Imprimir / Salvar em PDF</button>
+    <button class="btn js-send-btn" type="button" disabled title="Disponível a partir de 90% do formulário preenchido">Enviar pelo WhatsApp</button>
 </div>
 <p class="toolbar-hint">1. Salve o PDF → 2. Envie esta conversa e anexe o PDF salvo.</p>
 
@@ -1524,6 +1529,14 @@
 
 </div>
 
+<div class="toolbar toolbar--bottom">
+    <button class="btn js-mode-btn" type="button">Modo paciente (ocultar anexo)</button>
+    <button class="btn js-print-btn" type="button" disabled title="Disponível a partir de 90% do formulário preenchido">Imprimir / Salvar em PDF</button>
+    <button class="btn js-send-btn" type="button" disabled title="Disponível a partir de 90% do formulário preenchido">Enviar pelo WhatsApp</button>
+    <button class="btn js-top-btn" type="button">Voltar ao topo ↑</button>
+</div>
+<p class="toolbar-hint">1. Salve o PDF → 2. Envie esta conversa e anexe o PDF salvo.</p>
+
 <script>
     // ---------- Autosave em localStorage ----------
     var STORAGE_KEY = 'anamnese-trg-autosave';
@@ -1573,8 +1586,8 @@
     }
 
     // ---------- Progresso de preenchimento (libera impressão/envio em 90%) ----------
-    var printBtn = document.getElementById('printBtn');
-    var sendBtn = document.getElementById('sendBtn');
+    var printBtns = Array.prototype.slice.call(document.querySelectorAll('.js-print-btn'));
+    var sendBtns = Array.prototype.slice.call(document.querySelectorAll('.js-send-btn'));
     var COMPLETION_THRESHOLD = 0.9;
 
     function isFieldAnswered(name) {
@@ -1590,11 +1603,11 @@
         var answered = fieldNames.filter(isFieldAnswered).length;
         var pct = answered / fieldNames.length;
         var unlocked = pct >= COMPLETION_THRESHOLD;
-        printBtn.disabled = !unlocked;
-        sendBtn.disabled = !unlocked;
         var title = unlocked ? '' : 'Disponível a partir de 90% do formulário preenchido (' + Math.round(pct * 100) + '% concluído)';
-        printBtn.title = title;
-        sendBtn.title = title;
+        printBtns.concat(sendBtns).forEach(function (btn) {
+            btn.disabled = !unlocked;
+            btn.title = title;
+        });
     }
 
     document.addEventListener('input', function (e) {
@@ -1635,19 +1648,33 @@
     updateIdade();
 
     // ---------- Ações finais ----------
-    printBtn.addEventListener('click', function () {
-        window.print();
+    printBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            window.print();
+        });
     });
 
-    sendBtn.addEventListener('click', function () {
-        var text = encodeURIComponent('Olá, Maria Betânia. Preenchi minha anamnese terapêutica e vou anexar o PDF nesta conversa.');
-        window.open('https://wa.me/5521988070905?text=' + text, '_blank');
+    sendBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var text = encodeURIComponent('Olá, Maria Betânia. Preenchi minha anamnese terapêutica e vou anexar o PDF nesta conversa.');
+            window.open('https://wa.me/5521988070905?text=' + text, '_blank');
+        });
     });
 
-    var modeBtn = document.getElementById('modeBtn');
-    modeBtn.addEventListener('click', function () {
-        var on = document.body.classList.toggle('patient-mode');
-        modeBtn.textContent = on ? 'Modo terapeuta (mostrar anexo)' : 'Modo paciente (ocultar anexo)';
+    var modeBtns = Array.prototype.slice.call(document.querySelectorAll('.js-mode-btn'));
+    modeBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var on = document.body.classList.toggle('patient-mode');
+            var label = on ? 'Modo terapeuta (mostrar anexo)' : 'Modo paciente (ocultar anexo)';
+            modeBtns.forEach(function (b) { b.textContent = label; });
+        });
+    });
+
+    var topBtns = Array.prototype.slice.call(document.querySelectorAll('.js-top-btn'));
+    topBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
     });
 
     // Barra de progresso de leitura do formulário
