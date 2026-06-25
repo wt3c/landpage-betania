@@ -321,6 +321,28 @@
             transition: border-color .18s ease;
         }
 
+        .dob-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dob-select {
+            flex: 1;
+            font-family: var(--font-body);
+            font-size: 15px;
+            color: var(--gold-deep);
+            background: transparent;
+            border: 0;
+            border-bottom: 1.5px solid var(--line);
+            padding: 7px 2px;
+            transition: border-color .18s ease;
+        }
+
+        .dob-select:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
         textarea {
             border: 1.5px solid var(--line);
             border-radius: 8px;
@@ -798,7 +820,7 @@
         <div class="signoff" style="margin-top:18px">
             <div class="col"><label class="q">Assinatura / nome</label><input type="text" name="assinatura_consent">
             </div>
-            <div class="col"><label class="q">Data</label><input type="date" name="data_consent"></div>
+            <div class="col"><label class="q">Data</label><input type="date" name="data_consent" id="data_consent"></div>
         </div>
     </section>
 
@@ -891,7 +913,32 @@
             <label class="q">Nome completo</label>
             <input type="text" name="nome">
             <div class="row" style="margin-top:14px">
-                <div class="col"><label class="q">Data de nascimento</label><input type="date" name="nascimento" id="nascimento"></div>
+                <div class="col">
+                    <label class="q">Data de nascimento</label>
+                    <div class="dob-row">
+                        <select name="nascimento_dia" id="nascimentoDia" class="dob-select" aria-label="Dia de nascimento">
+                            <option value="">Dia</option>
+                        </select>
+                        <select name="nascimento_mes" id="nascimentoMes" class="dob-select" aria-label="Mês de nascimento">
+                            <option value="">Mês</option>
+                            <option value="01">Jan</option>
+                            <option value="02">Fev</option>
+                            <option value="03">Mar</option>
+                            <option value="04">Abr</option>
+                            <option value="05">Mai</option>
+                            <option value="06">Jun</option>
+                            <option value="07">Jul</option>
+                            <option value="08">Ago</option>
+                            <option value="09">Set</option>
+                            <option value="10">Out</option>
+                            <option value="11">Nov</option>
+                            <option value="12">Dez</option>
+                        </select>
+                        <select name="nascimento_ano" id="nascimentoAno" class="dob-select" aria-label="Ano de nascimento">
+                            <option value="">Ano</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="col"><label class="q">Idade</label><input type="text" name="idade" id="idade" readonly></div>
             </div>
             <label class="q">Como você prefere ser tratado(a)? (identidade de gênero / pronomes)</label>
@@ -1623,13 +1670,33 @@
         updateCompletion();
     });
 
+    // ---------- Data de nascimento (selects) ----------
+    // Precisa popular as opções de dia/ano ANTES do restoreDraft(), senão o
+    // select ainda não tem a option correspondente e o valor salvo não restaura.
+    var diaSelect = document.getElementById('nascimentoDia');
+    var mesSelect = document.getElementById('nascimentoMes');
+    var anoSelect = document.getElementById('nascimentoAno');
+    var idadeInput = document.getElementById('idade');
+
+    for (var d = 1; d <= 31; d++) {
+        var opt = document.createElement('option');
+        opt.value = String(d).padStart(2, '0');
+        opt.textContent = d;
+        diaSelect.appendChild(opt);
+    }
+
+    var anoAtual = new Date().getFullYear();
+    for (var y = anoAtual; y >= anoAtual - 100; y--) {
+        var optY = document.createElement('option');
+        optY.value = String(y);
+        optY.textContent = y;
+        anoSelect.appendChild(optY);
+    }
+
     restoreDraft();
     updateCompletion();
 
     // ---------- Idade calculada a partir da data de nascimento ----------
-    var nascimentoInput = document.getElementById('nascimento');
-    var idadeInput = document.getElementById('idade');
-
     function calculateAge(birthDateStr) {
         if (!birthDateStr) return '';
         var birth = new Date(birthDateStr + 'T00:00:00');
@@ -1643,11 +1710,27 @@
     }
 
     function updateIdade() {
-        idadeInput.value = calculateAge(nascimentoInput.value);
+        if (diaSelect.value && mesSelect.value && anoSelect.value) {
+            idadeInput.value = calculateAge(anoSelect.value + '-' + mesSelect.value + '-' + diaSelect.value);
+        } else {
+            idadeInput.value = '';
+        }
     }
 
-    nascimentoInput.addEventListener('input', updateIdade);
+    [diaSelect, mesSelect, anoSelect].forEach(function (sel) {
+        sel.addEventListener('change', updateIdade);
+    });
     updateIdade();
+
+    // ---------- Data do consentimento pré-preenchida com hoje ----------
+    var dataConsentInput = document.getElementById('data_consent');
+    if (dataConsentInput && !dataConsentInput.value) {
+        var hoje = new Date();
+        var hojeISO = hoje.getFullYear() + '-' +
+            String(hoje.getMonth() + 1).padStart(2, '0') + '-' +
+            String(hoje.getDate()).padStart(2, '0');
+        dataConsentInput.value = hojeISO;
+    }
 
     // ---------- Ações finais ----------
     printBtns.forEach(function (btn) {
